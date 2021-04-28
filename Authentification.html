@@ -1,0 +1,197 @@
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
+    </style>
+</head>
+
+<style type="text/css">
+
+ 
+
+    body{
+        background-color:#493A34;
+        display: flex;
+        justify-content: center;
+        background-image: url(../Images/temple.png);
+        background-repeat: repeat;
+        font-family: 'Arial';
+    }
+
+    .back{
+        margin: auto;
+        background-color:azure;
+        border-radius: 25px;
+        padding: 25px;
+        min-height: 350px;
+        min-width: 250px;
+        height: 35%;
+        width: 70%;  
+    }
+
+    h1{
+        font-size: 5em;
+    }
+
+    label{
+        font-size: 2em;
+    }
+
+    .login, .password{
+    height: 8%;
+    width: 90%;
+    font-size: 2em;
+    }
+
+    #user{
+        color: rgb(167, 163, 163);
+        font-size: 2em;
+        
+    }
+
+    #clok{
+        color: rgb(167, 163, 163);
+        font-size: 2em;
+    }
+
+  .div_input{
+      border-bottom: solid 2px rgb(167, 163, 163);
+      margin-bottom: 10px;
+  }
+
+  input{
+      border : none;
+      margin-bottom: 10px;
+      margin-top: 10px;
+      font-weight: bold;
+  }
+
+
+
+  .titre{
+    display: flex;
+    justify-content:center;
+  }
+  
+  .mdp_oublie{
+      width: 100%;
+      display: flex;
+      align-items: flex-end;
+      flex-direction: column;
+      margin : 3px;
+  }
+
+  #btn_mdp{
+     
+      font-size: 1.5em;
+      color: rgb(167, 163, 163);
+      text-decoration:none;
+  }
+
+  .connexion{
+      display: flex;
+      justify-content:center;
+      margin: 10px;
+  }
+
+  #bt_conex{
+      width: 70%;
+      height: 50%;
+      border-radius: 25px;
+      background-color: rgb(126, 91, 17);
+      color: white;
+      padding:10px;
+      font-size: 2em;
+  }
+
+  span{
+    font-size: 1.5em;
+  }
+
+  #autres_btn{
+      margin-top: 25px;
+      display: flex;
+      justify-content:center;
+      margin-bottom: 5px;
+      font-size: 2em;
+  }
+
+  #fb, #go, #ap{
+      display: flex;
+      border-radius: 50%;
+      color: white;
+      width: 80px;
+      height: 80px;
+      margin-right: 25px;
+      justify-content: center;
+      align-items: center;
+  }
+
+  #fb{
+    background-color: rgb(0, 132, 255);
+  }
+
+  #go{
+      background-color: rgb(255, 60, 0);
+  }
+
+  #ap{
+      background-color: rgb(180, 180, 180);
+  }
+</style>
+
+<body>
+    <div id='back' class='back'>
+        <div id='titre' class='titre'>
+            <h1>Connexion</h1>
+        </div>
+        
+        <form>
+        <div class='div_input'>
+        <label>Nom d'utilisateur</label>
+        </br>
+        <i id='user' class="far fa-user"></i>
+        <input type='text' id='login' class='login' placeholder="Entrez votre identifiant">
+        </div>
+
+        <div class='div_input'>
+        <label>Mot de passe</label>
+        </br>
+        <i id='clok' class="fas fa-lock"></i>
+        <input type='password' id='password' class='password' placeholder="Entrez votre mot de passe">
+        </div>
+
+        <div id='mdp_oublie' class='mdp_oublie'>
+            <a href="" id='btn_mdp'>Mot de passe oublié ?</a>
+        </div>
+
+        <div id='connexion' class='connexion'>
+            <input type='submit' value='CONNEXION' id='bt_conex'>
+        </div>
+        
+
+        <div class='titre'>
+            <span>Ou inscrivez-vous en utilisant </span>
+        </div>
+
+        <div id='autres_btn'>
+            <div id='fb'class='btn_fb'>
+                <i class="fab fa-facebook-f"></i>
+            </div>
+            <div id='go'class='btn_go'>
+                <i class="fab fa-google"></i>
+            </div>
+            <div id='ap'class='btn_ap'>
+                <i class="fab fa-apple"></i>
+            </div>
+            
+        </div>
+        </form>
+    </div>
+   
+
+    
+
+</body>

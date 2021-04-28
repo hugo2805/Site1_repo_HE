@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Les Structures de contôle</title>
+        <meta charset="utf-8"/>
+        <link rel="shortcut icon" type="image/x-icon" href="../Images/chateau.png"/>
+        <style type="text/css">
+    	</style>
+	</head>
+
+	<body>
+
+            <p>choisisez un mois : </p>
+         
+            
+
+                <script type="text/javascript">
+
+                    document.write("Mois : <select id='mois'>");
+    
+                        var mois = ["Mois","Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Août","Septembre","Octobre","Décembre"];
+                    for (var i = 0; i< mois.length;i++) {
+                     if (i == 0){
+                    document.write("<option value=" + i + " selected>-" + mois[i] + "</option>");
+                    } else {document.write("<option value=" + i + ">" + mois[i] + "</option>");
+    
+            }
+        }
+
+                    document.write("</select>");
+
+                    </script>
+                
+                    
+                    <input type="button" value="saison ?" onclick="valider()">
+
+
+                    <p id="reponse">résultat</p>
+
+                    <script>
+
+                    function valider() {
+                        var month = document.getElementById("mois").value;
+                        var reponse = document.getElementById("reponse");
+
+                        reponse.innerHTML = QuelMois(month);
+                    
+                    }
+
+
+
+
+            function QuelMois (month) {
+                switch(month*1){
+                    case (1):
+                    case (2):
+                    case (3):
+                        return "l'hiver";
+                    case (4):
+                    case (5):
+                    case (6):
+                        return "l'été";
+                    case (7):
+                    case (8):
+                    case (9):
+                        return "Le printemps";
+                    case (10):
+                    case (11):
+                    case (12):
+                        return "l'Automne";
+                }
+            }
+
+
+
+                </script>
+
+                    
+                 <p>choisisez plusieurs mois : </p>
+         
+            
+
+                <script type="text/javascript">
+
+                    document.write("Mois : <select id='mois2' multiple= >");
+    
+                        var mois = ["Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Août","Septembre","Octobre","Décembre"];
+                    for (var i = 0; i< mois.length;i++) {
+                     if (i == 0){
+                    document.write("<option value=" + (i+1) + " selected>" + mois[i] + "</option>");
+                    } else {document.write("<option value=" + (i+1) + ">" + mois[i] + "</option>");
+    
+            }
+        }
+
+                    document.write("</select>");
+
+                    </script>
+                
+                    
+                    <input type="button" value="saison ?" onclick="valider2()">
+                    <input type="button" value="récup" onclick="recup()">
+
+                    <p id="reponse2">résultat</p>
+
+                    <script>
+
+                    function valider2() {
+                        var month = document.getElementById("mois2").value;
+                        var reponse = document.getElementById("reponse2");
+                        hiver = "";
+                        ete = "";
+                        automne ="";
+                        printemps =""
+
+                        for (i=0; i<selList.length; i++){
+                            if (selList[i]==1 ||selList[i]==2 ||selList[i]==3)
+                                hiver = "hiver";
+                            if (selList[i]==4 ||selList[i]==5 ||selList[i]==6)
+                                printemps = "printemps";
+                            if (selList[i]==7 ||selList[i]==8 ||selList[i]==9)
+                                ete = "été";
+                            if (selList[i]==10 ||selList[i]==11 ||selList[i]==12)
+                                automne = "automne";
+
+                        }
+
+                        reponse.innerHTML = "saison(s) sélectionné(s) :" + hiver + " " + printemps + " " + ete + " " + automne
+                    
+                    }
+
+
+
+
+            function QuelMois2 (month) {
+                switch(month*1){
+                    case (1):
+                    case (2):
+                    case (3):
+                        return "l'hiver";
+                    case (4):
+                    case (5):
+                    case (6):
+                        return "le printemps";
+                    case (7):
+                    case (8):
+                    case (9):
+                        return "L'été";
+                    case (10):
+                    case (11):
+                    case (12):
+                        return "l'Automne";
+                }
+            }
+
+            function recup (){
+                 var month = document.getElementById("mois2");
+                    selList = [];
+
+                 for (i=0; i<month.length; i++) {
+                    if (month[i].selected){
+                            selList.push(month[i].value);
+                    }
+                 }
+
+                
+              for (i=0; i<selList.length; i++) {
+                console.log(selList[i]);
+              }      
+            }
+
+
+
+                </script>
+
+
+
+
+
+
+        <footer>
+            <p>Ce site à été réalisé par Hugo Eitel</p><br/>
+             
+        </footer>
+    </body>
+</html>

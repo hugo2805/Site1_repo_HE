@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Les Structures de contôle</title>
+        <meta charset="utf-8"/>
+        <link rel="shortcut icon" type="image/x-icon" href="../Images/chateau.png"/>
+        <style type="text/css">
+        	#damier{
+        		border: solid;
+        	}
+    	</style>
+	</head>
+
+	<body>
+
+
+              <h1>Damier</h1>
+
+              <p>Entrez la taille de votre damier...</p>
+
+              <input type="number" id="select">
+              <input type="button" value="Afficher" onclick="afficher()">
+
+              <table id="damier">
+              	
+              </table>
+
+              <script type="text/javascript">
+              // Utilisation de setatribute pour le damier
+              		var longeurTab = document.getElementById('select').value;
+
+              		function afficher(){
+              			for (i=0; i <= longeurTab; i++){
+              				document.write("<tr id='ligne" + i + "'>");
+              				for (j=0; j <= longeurTab; i++){
+              				document.write("<td id='case" + i + "'>");
+              				document.write("</td>");
+              				}
+              				document.write("</tr>");
+              			}
+              		}
+
+
+
+
+              </script>
+
+
+
+
+
+
+
+        <footer>
+            <p>Ce site à été réalisé par Hugo Eitel</p><br/>
+             
+        </footer>
+    </body>
+</html>
+

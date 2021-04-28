@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Les Structures de contôle</title>
+        <meta charset="utf-8"/>
+        <link rel="shortcut icon" type="image/x-icon" href="../Images/chateau.png"/>
+        <style type="text/css">
+
+                .case {
+                    background-color: #596B53;
+                    border: solid;
+                    border-color: #67C844;
+                    border-radius: 10%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    font-size: 2em;
+                    margin: 10px;
+                    
+
+                }
+
+                #back {
+                    background-color: black;
+                    border: solid;
+                    border-color: black;
+                    height: 30vw;
+                    width: 30vw;
+                    display: grid;
+                    grid-template-columns: repeat(3, 1fr);
+                }
+
+                .toute {
+                    border-color: red;
+                    border-radius: 100%;
+                }
+
+
+    	</style>
+	</head>
+
+	<body>
+                <script type="text/javascript">
+
+                var tab1 =[];
+                    ValRandom = (Math.round(Math.random()*9));
+                for (i=0; i<=8; i++) {
+                    while (tab1.includes(ValRandom)) {
+                        ValRandom = (Math.round(Math.random()*9));
+                    } 
+                        tab1[i]= ValRandom;
+                        console.table(tab1);
+
+                    }
+                
+
+
+                    document.write("<div id='back'>");
+
+                    
+
+
+                    for (var i = 0; i<= 8;i++) {
+            if((i == 0) || (i == 3) || (i == 6)) {
+                document.write("<div id='case" + i +"' class='case gauche'>" + tab1[i] + "</div>");
+            }
+            if((i == 1) || (i == 4) || (i == 7)) {
+                document.write("<div id='case" + i +"' class='case mid'>" + tab1[i] + "</div>");
+            }
+            if((i == 2) || (i == 5) || (i == 8)){
+                document.write("<div id='case" + i +"' class='case droite'>" + tab1[i] + "</div>");
+            }
+            //document.write("<div id='case" + i +"' class='case'>" + tab1[i] + "</div>");
+        }
+
+                    document.write("</div>");
+
+                </script>
+
+
+
+              <input type="button" value="Reload" onclick="Clear()">
+              <input type="button" value="Tous" onclick="All()">
+              <input type="button" value="gauche" onclick="gauche()" >
+              <input type="checkBox" value="afficher" checked="" id="radio" onchange="disparition()">
+
+                <script type="text/javascript">
+
+                function Clear(){
+                    window.location.reload();
+                    return false;
+                }
+
+                function All() {
+                    for (i=0; i <= 8; i++) {
+                    div.classList.add(toute);
+                }
+            }
+
+                function gauche(){
+                    var tabGauche = document.getElementsByClassName("gauche");
+
+                    for (i=0; i < tabGauche.length; i++){
+                        tabGauche[i].style.color = "red"; 
+                    }
+
+                    
+                
+                    }
+
+                    function disparition (){
+                            if (document.getElementById("radio").checked){
+                                tabGauche[i].style.opacity = "0%";
+                            } else {
+                                tabGauche[i].style.opacity = "100%";
+                            }
+                    } 
+                
+
+
+    
+
+                </script>
+
+
+
+
+
+        <footer>
+            <p>Ce site à été réalisé par Hugo Eitel</p><br/>
+             
+        </footer>
+    </body>
+</html>

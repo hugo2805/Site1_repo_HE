@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Le DOM</title>
+        <meta charset="utf-8"/>
+        <link rel="shortcut icon" type="image/x-icon" href="../Images/chateau.png"/>
+        <style type="text/css">
+                #cadre{
+                    border: solid 3px pink;
+                    width: 30%;
+                }
+
+                #para {
+                    font-style: oblique;
+                }
+
+                .popo {
+                    font-style: blue;
+                }
+
+                #container{
+                    position: relative;
+                    background-color: grey;
+                    width: 400px;
+                    height: 400px;
+                }
+
+                #animate {
+                    position: absolute;
+                    background-color: pink;
+                    width: 50px;
+                    height: 50px;
+                    animation: animationRad;
+                    animation-duration: 4s;
+                    animation-iteration-count: infinite;
+                }
+
+                                @keyframes animationRad{
+                    0%{
+                        
+                        border-radius: 0%;
+                    }
+                    50%{
+                        
+                        border-radius: 50%;
+                    }
+                    100%{
+                       
+                        border-radius: 0%;
+                    }
+                }
+    	</style>
+	</head>
+
+	<body>
+
+                <p>
+                    Le Document Object Model (DOM) est une interface de programmation normalisée par le W3C, qui permet à des scripts d'examiner et de <br> modifier le contenu du navigateur web1. Par le DOM, la composition d'un document HTML ou XML est représentée sous forme d'un jeu d'objets <br>  – lesquels peuvent représenter une fenêtre, une phrase ou un style, par exemple – reliés selon une structure en arbre1. À l'aide du <br> DOM, un script peut modifier le document présent dans le navigateur en ajoutant ou en supprimant des nœuds de l'arbre
+                </p>
+
+            <div id="cadre" style="border-width: 10px">
+                <p id="para" class="popo">
+                    Paragraphe Contenu dans le cadre.<br>
+                    la page est la racine "root"<br>
+                    les éléments les noeuds "node"<br>
+        
+                </p>
+            </div>
+
+            <p></p>
+
+                    <label for="input1">
+                <input type="text" id="in" name="input1" placeholder="je suis un placeholder" class="popo" >
+                    </label>
+
+
+                <button id="btn1" onclick="grossir()">Epaissir la bordure</button>
+              
+                <script type="text/javascript">
+                    
+                        var contour = document.getElementById("cadre");
+                        var paragraphes = contour.getElementsByTagName("p");
+                        var fond = document.getElementById("in");
+                        console.log(Array.isArray(paragraphes));
+                        console.table(paragraphes);
+                        console.log(paragraphes.length);
+                        console.log(paragraphes[paragraphes.length-1]);
+                        console.log(paragraphes[paragraphes.length-1].id);
+                        var x = document.querySelectorAll('p.popo');
+                        console.log(x);
+                        var y = document.querySelectorAll('.popo');
+                        console.log(y);
+                        var z = document.querySelectorAll('#para');
+                        console.log(z);
+                        console.log(x[0].innerHTML);
+
+                        function grossir(){
+                            contour.style.borderWidth ='25px';
+
+                        }
+
+                        //document.getElementById('para').onmouseover =function(){
+                          //  alert(x[0].innerHTML);
+
+                        //}
+                        document.getElementById('in').onfocus =function(){
+                            fond.style.backgroundColor = 'red';
+                            
+
+                        }
+
+                        document.getElementById('in').onblur =function(){
+                            fond.style.backgroundColor = 'grey';
+
+
+                        }
+
+
+
+
+
+
+
+                </script>
+
+
+
+                <h2>Annimation Dom</h2>
+
+                <div id="container">
+                    <div id="animate"></div>
+                    
+                </div>
+
+                <button onclick="Animation()">Animer</button>
+
+                <script type="text/javascript">
+                    function Animation() {
+
+                        var elem = document.getElementById("animate");
+                        var pos = 0 ;
+                        var id = setInterval(frame, 2);
+                        function frame () {
+                            if (pos == 350) {
+                                clearInterval(id); 
+                            } else {
+                                pos++;
+                                elem.style.top = pos + "px";
+                                elem.style.left = pos + "px";
+                            }
+                        }
+                    }
+                </script>
+
+                <h2>Gestion des évenements avec le Dom</h2>
+
+                <h3 id="monH3">Evenement Dom : Cliquer</h3>
+                <h3 id="monPierre" onclick="text_changement(this); test_alert(); test_alert2();">Evenement Dom : Cliquer</h3>
+
+                <script type="text/javascript">
+                    var valH3 =document.getElementById('monH3');
+                    valH3.onclick = text_changement(valH3);
+                        function text_changement(valH3){
+                            
+                            valH3.innerHTML = "salut, ce texte à été changé";
+                              }
+                            function test_alert(){
+                                valH3.innerHTML += "<br>Texte rajouté à la ligne par une fonction sans paramètre";
+                            }
+
+                            console.log(Date());
+
+                            function AfficheDate(){
+                                valH3.innerHTML += "<br>"+Date();
+                            }
+
+                            function test_alert2 (){
+                                AfficheDate();
+                            }
+                
+                      
+                </script>
+
+                <h3>Gestion des évenements avec Dom Eventlistener</h3>
+                <p>La methode addEventListener() ajoute des listeners à l'élément spécifié</p>
+                <p id="parOver">Survoler pour voir l'effet du addEventListener</p>
+
+                <script type="text/javascript">
+                    var Objpar = document.getElementById('parOver');
+                    Objpar.addEventListener("mouseover", test_Add_Listener);
+
+                    function test_Add_Listener(){
+                        alert('paragraphe survolé, listener fonctionel !');
+                    }
+
+                    // pour suprimmer on utilisera un removeEventListener 
+
+                    document
+
+
+                </script>
+
+                <button id="btnDom">DOM</button>
+                    <script type="text/javascript">
+                        var theDom = document.getElementById('btnDom');
+                        theDom.addEventListener('click', TtmtNode);
+                        function TtmtNode(){
+                            var html = document.firstChild.nodeName
+                            console.log(html);//html
+                            console.log(document.firstChild.nodeValue); //null
+                            console.log(document.firstChild.nodeType);  //10
+                            console.log(document.lastChild.nodeName);   //HTML
+                            console.log(document.lastChild.nodeValue);  //null
+                            console.log(document.lastChild.nodeType);    //1
+                            var entete = document.getElementsByTagName(html)[0].firstChild.nodeName;
+                            console.log(entete);  // HEAD
+
+                        }
+                    </script>
+
+
+
+                    <h3>créer des éléments dans le dom</h3>
+
+                    <div id="div1">
+                        <p id="p1">premier paragraphe</p>
+                        <p id="p2">second paragraphe</p>
+                    </div>
+
+                    <input type="button" value="Remplace" onclick="remplace()">
+
+                    <script type="text/javascript">
+                        //créer l'élément paragraphe
+                        var para = document.createElement("p");
+                        //l'element paragraphe a un contenu textuel : TextNode
+                        var node = document.createTextNode("Un nouveau texte pour une nouveau paragraphe");
+                        //Le texte est un enfant a ajouter a son parent : le paragraphe
+                        para.appendChild(node);
+
+                        var element = document.getElementById("div1");
+                        element.appendChild(para);
+
+                        
+                            //Ajouter un élément avant le 1er paragraphe
+                            var para = document.createElement('p');
+                            var tNode = document.createTextNode('Un nouveau texte pour un 4eme paragraphe');
+                            para.appendChild(tNode);
+                            var element = document.getElementById('div1');
+                            var child = element.firstChild;
+                            //Ajouter l'élément avant le 1er enfant du DIV
+                            element.insertBefore(para, child);
+
+
+                            function remplace(){
+                            var para1 = document.createElement('p');
+                            var tNode1 = document.createTextNode('le paragraphe de remplacement');
+                            para1.appendChild(tNode1);
+                            var element1 = document.getElementById('div1');
+                            var child1 = element.firstChild;
+                            //Ajouter l'élément avant le 1er enfant du DIV
+                            element1.replaceChild(para1, child1);
+                            }
+
+
+                            // Utilisation de setatribute pour le damier
+
+
+
+                    </script>
+
+
+
+
+
+
+
+        <footer>
+            <p>Ce site à été réalisé par Hugo Eitel</p><br/>
+             
+        </footer>
+    </body>
+</html>

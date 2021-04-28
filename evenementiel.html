@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Les Structures de contôle</title>
+        <meta charset="utf-8"/>
+        <link rel="shortcut icon" type="image/x-icon" href="../Images/chateau.png"/>
+        <style type="text/css">
+            #div1{
+                height: 50px;
+                width: 50px;
+                background-color: grey;
+                border: solid 3px;
+                position: relative;
+            }
+            #div2{
+                height: 50px;
+                width: 50px;
+                background-color: pink;
+                border: solid 3px;
+                position: relative;
+            }
+
+    	</style>
+	</head>
+
+	<body>
+
+        <h1>Déplacer un div avec les flèches du clavier</h1>
+
+        <h2>Savoir récupérer les touches appuyées</h2>
+
+        <div id="div1"></div>
+        <div id="div2"></div>
+
+        <script type="text/javascript">
+                var div1 = document.getElementById('div1');
+                var monDiv = div1.style;
+                var div2 = document.getElementById('div2');
+                var monDiv1 = div2.style;
+                var posvert = 0;
+                var poshori = 0;
+                var posvert2 = 0;
+                var poshori2 = 0;
+
+                function IsCollision(){
+                    if(Math.abs(i))
+                }
+
+            document.onkeydown = function (event){
+                event = event || window.event;
+               // alert(event.keyCode); 
+
+                // haut 38
+                //doite 39
+                //bas 40
+                // gauche 37
+
+            
+                //Q = 81,  S =83, D =68 , Z = 90
+
+
+
+                switch(event.keyCode){
+                    case 40:
+                    posvert+=10;
+                    monDiv.top = posvert + "px";
+                        break;
+                        case 39:
+                    poshori+=10;
+                    monDiv.left = poshori + "px";
+                        break;
+                        case 38:
+                    posvert-=10;
+                    monDiv.top = posvert + "px";
+                        break;
+                        case 37:
+                    poshori-=10;
+                    monDiv.left = poshori + "px";
+                        break;
+                        
+
+
+                        case 83:
+                    posvert2+=10;
+                    monDiv1.top = posvert2 + "px";
+                        break;
+                        case 68:
+                    poshori2+=10;
+                    monDiv1.left = poshori2 + "px";
+                        break;
+                        case 90:
+                    posvert2-=10;
+                    monDiv1.top = posvert2 + "px";
+                        break;
+                        case 81:
+                    poshori2-=10;
+                    monDiv1.left = poshori2 + "px";
+                        break;
+
+                }
+                }
+
+
+      
+        </script>
+
+              
+
+
+
+
+
+
+        <footer>
+            <p>Ce site à été réalisé par Hugo Eitel</p><br/>
+             
+        </footer>
+    </body>
+</html>

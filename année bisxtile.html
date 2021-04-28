@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Java script</title>
+        <meta charset="utf-8"/>
+        <link rel="shortcut icon" type="image/x-icon" href="../Images/chateau.png"/>
+        <style type="text/css">
+    	</style>
+	</head>
+
+	<body>
+
+     
+                <p>// Année bisextile</p>
+              <p>Entrez une année : </p>
+              <input type="text" id="annee">
+              <input type="button" name="go" onclick="estBisextile()" value="go !">
+
+              <script type="text/javascript">
+                  
+               // function Bisext () {
+                   
+
+                   // if((an%4 == 0) && (an%100 != 0) || (an%400 == 0)){
+                       // document.getElementById("annee").style.border = "sloid green";
+                   // }
+
+                  //  else {
+                  //  document.getElementById("annee").style.border = "sloid red";
+               // }
+
+
+                function estBisextile (an){
+                    var an = new Number(document.getElementById("annee").value);
+                    if (an > 0){
+                        //console.log((an%4 == 0) && (an%100 != 0) || (an%400 == 0));
+                        return((an%4 == 0) && (an%100 != 0) || (an%400 == 0));
+                    } else {
+                        alert('saisir une valeur');
+                    }
+                }
+
+                function modifStyle(){
+                    document.getElementById("annee").style.border = "sloid red";
+                    if (estBisextile(document.getElementById("annee").value)){
+                        document.getElementById("annee").style.border = "sloid green";
+                    }
+                }
+
+
+
+              </script>
+
+
+                <div>
+                <p>// Boulangerie :</p>
+                <p>Entrez un jour et une heure :</p>
+
+
+              <select id="jour">
+                  <option value="0">Lundi</option>
+                  <option value="1">Mardi</option>
+                  <option value="2">Mercredi</option>
+                  <option value="3">Jeudi</option>
+                  <option value="4">Vendredi</option>
+                  <option value="5">Samedi</option>
+                  <option value="6">Dimanche</option>
+              </select>
+              <input type="number" id="heure" step="1" max="23" min="0"> 
+              <input type="button" value="Vérifier !" onclick="boulang();">
+            <p>La Boulangerie sera :</p>
+              <input type="text" id="result">
+
+              <script type="text/javascript">
+                  
+                function boulang() {
+
+                var h = new Number (document.getElementById("heure").value);
+                var j = new Number(document.getElementsByTagName('Jour').value);
+                var Cell = document.getElementById("result")
+                var Res = 'Fermée';
+
+                if ((h>=7 && h<=13) || (h>=16 && h<=20) && (j>=2 && j<=6)) {
+                           Cell.style.border="2px solid #0B5345";
+                            Cell.style.backgroundColor= "#31ED48" ;
+                            Res = 'Ouverte';
+                              }else{
+                                if ((h>=7 && h<=13) && (j==0)){
+                                    Cell.style.border="2px solid #0B5345";
+                            Cell.style.backgroundColor= "#31ED48" ;
+                            Res = 'Ouverte';
+                                }
+                                    else { if (j==1 || (j==0 && h>=16 && h<=20)) {
+                                Cell.style.border="2px solid #AB1212";
+                              Cell.style.backgroundColor= "#E3D0D0" ;
+                              Res = 'Fermée';}
+                                }
+                             
+      }
+                    
+                    document.getElementById("result").value = Res;
+            }
+
+           
+
+        
+
+              </script> 
+
+            <!--     tableau jours
+
+            var jour = ["lundi","Mardi","Mercredi","Jeudi","Vendredi","Samedi","Dimanche"];
+            for (var i > 0; i< jour.length;i++) {
+                if (i == 0)
+                document.writer("<option value>" + i + "selected" + jour[i] + "</option>");
+
+            } else {
+                document.writer("<option value>" + i + ">" + "h</option>");
+
+                    document.writer("<selected>")
+            } -->
+            </div>
+
+
+ 
+
+
+
+
+        <footer>
+            <p>Ce site à été réalisé par Hugo Eitel</p><br/>
+             
+        </footer>
+    </body>
+</html>
