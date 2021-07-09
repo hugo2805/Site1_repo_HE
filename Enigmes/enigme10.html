@@ -153,9 +153,9 @@
 	function FollowCursorPosition(event){
 		if (draggedObject){
 			var e = event || window.event;
-			console.log(e.clientX +' '+ e.clientY);
-			draggedObject.style.left = e.clientX - beaconWidth/2;
-			draggedObject.style.top  = e.clientY - beaconWidth/2;
+            // console.log(e.touches[0].clientX + ' ' + e.touches[0].clientY);
+            draggedObject.style.left = e.touches[0].clientX - beaconWidth/2;
+            draggedObject.style.top = e.touches[0].clientY - beaconWidth/2;
 			UpdateWires();
 			VerifyDots();
 			Won();
