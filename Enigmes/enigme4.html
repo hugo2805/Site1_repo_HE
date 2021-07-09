@@ -9,8 +9,8 @@
         </p>
     </div>
 
-    <div>
-        <div style="display: flex; height: 100%;">
+    <div style="display:flex; flex-direction: column; justify-content: center; align-items:center;" >
+        <div style="display: flex; height: 30vh; width: 100vw; flex-direction: row; justify-content: space-around; align-items: center;">
             <div id="flacon1" class="flacon full" onclick="plein(1)">
                 <div class="liquide"></div>
             </div>
@@ -36,7 +36,7 @@
             </div>
         </div>
 
-        <div id="chiffres" style="display: flex;">
+        <div id="chiffres" style="display: flex; height: 10vh; width: 100vw; flex-direction: row; justify-content: space-around; align-items: center;">
             <div class="chiffre">1</div>
             <div class="chiffre">2</div>
             <div class="chiffre">3</div>
@@ -57,34 +57,31 @@
 
 <style>
     .flacon{
-        border-bottom: orange 2px solid;
-        border-right: orange 2px solid;
-        border-left: orange solid;
+        border-bottom: orange .2vh solid;
+        border-right: orange .2vh solid;
+        border-left: orange .2vh solid;
         border-bottom-right-radius: 50px ;
         border-bottom-left-radius: 50px ;
         overflow: hidden;
         display:flex;
         align-items: flex-end;
         width: 10%;
-        height: 100%;
+        height: 25vh;
         margin : 10px;
-        max-width: 40px;
-        min-width: 30px;
-        max-height: 100px;
     }
 
     .chiffre{
         border: solid 2px;
         border-radius: 50px;
         width: 100%;
-        height: 100%;
+        height: 5vh;
         margin : 10px;
-        max-width: 40px;
-        min-width: 30px;
         display: flex;
         justify-content: center;
-        border-color: rgb(204, 178, 91);
+        border: solid .2vh rgb(204, 178, 91);
         color: rgb(204, 178, 91);
+
+        font-size: 5em;
     }
 
     #chiffres{
