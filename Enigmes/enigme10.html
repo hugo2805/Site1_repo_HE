@@ -21,11 +21,11 @@
 
     <canvas id="canvas"></canvas>
 
-	<div id="b1" class="beacon" onmousedown="SwitchObjectDragged(this.id, true)" onmouseup="SwitchObjectDragged(this.id, false)">1</div>
-	<div id="b2" class="beacon" onmousedown="SwitchObjectDragged(this.id, true)" onmouseup="SwitchObjectDragged(this.id, false)">2</div>
-	<div id="b3" class="beacon" onmousedown="SwitchObjectDragged(this.id, true)" onmouseup="SwitchObjectDragged(this.id, false)">3</div>
-	<div id="b4" class="beacon" onmousedown="SwitchObjectDragged(this.id, true)" onmouseup="SwitchObjectDragged(this.id, false)">4</div>
-	<div id="b5" class="beacon" onmousedown="SwitchObjectDragged(this.id, true)" onmouseup="SwitchObjectDragged(this.id, false)">5</div>
+	<div id="b1" class="beacon" ontouchestart="SwitchObjectDragged(this.id, true)" ontouchend="SwitchObjectDragged(this.id, false)">1</div>
+	<div id="b2" class="beacon" ontouchstart="SwitchObjectDragged(this.id, true)" ontouchend="SwitchObjectDragged(this.id, false)">2</div>
+	<div id="b3" class="beacon" ontouchstart="SwitchObjectDragged(this.id, true)" ontouchend="SwitchObjectDragged(this.id, false)">3</div>
+	<div id="b4" class="beacon" ontouchstart="SwitchObjectDragged(this.id, true)" ontouchend="SwitchObjectDragged(this.id, false)">4</div>
+	<div id="b5" class="beacon" ontouchstart="SwitchObjectDragged(this.id, true)" ontouchend="SwitchObjectDragged(this.id, false)">5</div>
 </body>
 
 
@@ -148,11 +148,12 @@
 
 	var draggedObject = null;
 
-	document.onmousemove = FollowCursorPosition;
+	document.ontouchmove = FollowCursorPosition;
 
 	function FollowCursorPosition(event){
 		if (draggedObject){
 			var e = event || window.event;
+			console.log(e.clientX +' '+ e.clientY);
 			draggedObject.style.left = e.clientX - beaconWidth/2;
 			draggedObject.style.top  = e.clientY - beaconWidth/2;
 			UpdateWires();
@@ -161,7 +162,7 @@
 		}
 	}
 
-	function SwitchObjectDragged(objId, selected){
+	function SwitchObjectDragged(objId, selected) {
 		if (draggedObject){
 			if (draggedObject.id == objId)
 				draggedObject = null;
