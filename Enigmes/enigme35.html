@@ -1,0 +1,190 @@
+<link rel="stylesheet" type="text/css" href="../css/default.css">
+
+
+<body id="content">
+    <div class="parchemin">
+        <p>
+            Disposez ces 16 cartes de sorte qu’il n’y ait jamais 2 fois<br>
+            la même figure ou la même couleur sur les 4 lignes et les 4<br>
+            colonnes.<br>
+            Chaque carte ne doit apparaître qu'une seule fois.
+        </p>
+    </div>
+
+    <div class="row">
+        <div class="slot" onclick="NextCard(0, 0)"></div>
+        <div class="slot" onclick="NextCard(0, 1)"></div>
+        <div class="slot" onclick="NextCard(0, 2)"></div>
+        <div class="slot" onclick="NextCard(0, 3)"></div>
+    </div>
+    <div class="row">
+        <div class="slot" onclick="NextCard(1, 0)"></div>
+        <div class="slot" onclick="NextCard(1, 1)"></div>
+        <div class="slot" onclick="NextCard(1, 2)"></div>
+        <div class="slot" onclick="NextCard(1, 3)"></div>
+    </div>
+    <div class="row">
+        <div class="slot" onclick="NextCard(2, 0)"></div>
+        <div class="slot" onclick="NextCard(2, 1)"></div>
+        <div class="slot" onclick="NextCard(2, 2)"></div>
+        <div class="slot" onclick="NextCard(2, 3)"></div>
+    </div>
+    <div class="row">
+        <div class="slot" onclick="NextCard(3, 0)"></div>
+        <div class="slot" onclick="NextCard(3, 1)"></div>
+        <div class="slot" onclick="NextCard(3, 2)"></div>
+        <div class="slot" onclick="NextCard(3, 3)"></div>
+    </div>
+
+</body>
+
+<style>
+    .row{
+        display: flex;
+        flex-direction: row;
+    }
+
+    .slot{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        font-size: 2em;
+
+        background-color: rgba(0, 0 ,0, .1);
+        border: solid 2px rgba(0, 0, 0, .1);
+        border-radius: 5px;
+
+        width: 10vh;
+        height: 10vh;
+
+        cursor: pointer;
+
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+}
+
+    form{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+</style>
+
+<script>
+    var cartes = ['V♠', 'D♠', 'R♠', 'A♠', 'V♣', 'D♣', 'R♣', 'A♣', 'V♥', 'D♥', 'R♥', 'A♥', 'V♦', 'D♦', 'R♦', 'A♦'];
+
+    var matCartes = [
+        ['V♠','V♠','V♠','V♠'],
+        ['V♠','V♠','V♠','V♠'],
+        ['V♠','V♠','V♠','V♠'],
+        ['V♠','V♠','V♠','V♠']
+    ];
+
+    function NextCard(x, y){
+        if (cartes.indexOf(matCartes[x][y]) < cartes.length-1)
+            matCartes[x][y] = cartes[cartes.indexOf(matCartes[x][y])+1];
+        else
+            matCartes[x][y] = cartes[0];
+        Update();
+        IsWon();
+    }
+
+    function Update(){
+        var slots = document.getElementsByClassName("slot");
+        for (var i = 0; i < 4; i++)
+            for (var j = 0; j < 4; j++){
+                slots[4*i+j].innerHTML = matCartes[i][j];
+                if (slots[4*i+j].innerHTML.includes('♥') || slots[4*i+j].innerHTML.includes('♦'))
+                    slots[4*i+j].style.color = "red";
+                else
+                    slots[4*i+j].style.color = "black";
+            }
+    }
+
+    function Occurrences(string, subString, allowOverlapping) {
+
+    string += "";
+    subString += "";
+    if (subString.length <= 0) return (string.length + 1);
+
+    var n = 0,
+        pos = 0,
+        step = allowOverlapping ? 1 : subString.length;
+
+    while (true) {
+        pos = string.indexOf(subString, pos);
+        if (pos >= 0) {
+            ++n;
+            pos += step;
+        } else break;
+    }
+    return n;
+}
+
+    function IsWon(){
+        var slots = document.getElementsByClassName("slot");
+        var isWon = true;
+
+        // 4 row letters
+        for (var i = 0; i < 4; i++){
+            var string = "";
+            for (var j = 0; j < 4; j++)
+                string += matCartes[i][j].substring(0, 1);
+            if (Occurrences(string, 'V') > 1) isWon = false;
+            if (Occurrences(string, 'D') > 1) isWon = false;
+            if (Occurrences(string, 'R') > 1) isWon = false;
+            if (Occurrences(string, 'A') > 1) isWon = false;
+        }
+
+        // 4 column letters
+        for (var i = 0; i < 4; i++){
+            var string = "";
+            for (var j = 0; j < 4; j++)
+                string += matCartes[j][i].substring(0, 1);
+            if (Occurrences(string, 'V') > 1) isWon = false;
+            if (Occurrences(string, 'D') > 1) isWon = false;
+            if (Occurrences(string, 'R') > 1) isWon = false;
+            if (Occurrences(string, 'A') > 1) isWon = false;
+        }
+
+        // 4 row signs
+        for (var i = 0; i < 4; i++){
+            var string = "";
+            for (var j = 0; j < 4; j++)
+                string += matCartes[i][j].substring(1, 1);
+            if (Occurrences(string, '♠') > 1) isWon = false;
+            if (Occurrences(string, '♣') > 1) isWon = false;
+            if (Occurrences(string, '♥') > 1) isWon = false;
+            if (Occurrences(string, '♦') > 1) isWon = false;
+        }
+
+        // 4 column signs
+        for (var i = 0; i < 4; i++){
+            var string = "";
+            for (var j = 0; j < 4; j++)
+                string += matCartes[j][i].substring(1, 1);
+            if (Occurrences(string, '♠') > 1) isWon = false;
+            if (Occurrences(string, '♣') > 1) isWon = false;
+            if (Occurrences(string, '♥') > 1) isWon = false;
+            if (Occurrences(string, '♦') > 1) isWon = false;
+        }
+
+        var string = "";
+
+        for (var i = 0; i < 4; i++){
+            for (var j = 0; j < 4; j++)
+                string += matCartes[i][j];
+            for (var k = 0; k < cartes.length-1; k++)
+                if (Occurrences(string, cartes[k]) > 1) isWon = false;
+        }
+
+        console.log(isWon);
+    }
+
+    Update();
+</script>

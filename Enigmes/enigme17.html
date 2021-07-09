@@ -1,0 +1,135 @@
+<link rel="stylesheet" type="text/css" href="../css/default.css">
+
+
+<div id="content">
+    <div class="parchemin">
+        <p>
+        	Dans l’agence temporelle, on compare l’ampleur des collections de cartes. L’agent Do a plus de cartes que l’opératrice mais moins que l’agent Jo. L’agent Pierrick a plus de cartes que l’agent Dario. L’opératrice a moins de cartes que l’agent Pierrick mais plus que Dario. Et l’agent Jo a moins de cartes que l’agent Pierrick. Qui a le plus de cartes et le moins de cartes ?
+        </p>
+    </div>
+
+    <form method="POST">
+        <div>
+            <fieldset>
+                <legend>+ de cartes</legend>
+
+                <div>
+                    <input type="radio" id="do" name="agent+" value="do" checked>
+                    <label for="huey">Do</label>
+                </div>
+
+                <div>
+                    <input type="radio" id="ope" name="agent+" value="ope">
+                    <label for="dewey">Opératrice</label>
+                </div>
+
+                <div>
+                    <input type="radio" id="jo" name="agent+" value="jo">
+                    <label for="louie">Jo</label>
+                </div>
+
+                <div>
+                    <input type="radio" id="pie" name="agent+" value="pie">
+                    <label for="louie">Pierrick</label>
+                </div>
+
+                <div>
+                    <input type="radio" id="dar" name="agent+" value="dar">
+                    <label for="louie">Dario</label>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>- de cartes</legend>
+
+                <div>
+                    <input type="radio" id="do" name="agent-" value="do" checked>
+                    <label for="huey">Do</label>
+                </div>
+
+                <div>
+                    <input type="radio" id="ope" name="agent-" value="ope">
+                    <label for="dewey">Opératrice</label>
+                </div>
+
+                <div>
+                    <input type="radio" id="jo" name="agent-" value="jo">
+                    <label for="louie">Jo</label>
+                </div>
+
+                <div>
+                    <input type="radio" id="pie" name="agent-" value="pie">
+                    <label for="louie">Pierrick</label>
+                </div>
+
+                <div>
+                    <input type="radio" id="dar" name="agent-" value="dar">
+                    <label for="louie">Dario</label>
+                </div>
+            </fieldset>
+        </div>
+
+    	<input type="submit" value="Valider">
+    </form>
+    
+    <!--Réponse : +Pierrick -Dario -->
+</div>
+
+<style>
+
+    form{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    form>div{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    fieldset{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        border: solid 2px orange;
+        border-radius: 5px;
+
+        width: 30vw;
+    }
+
+    fieldset>div{
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+
+        width: 40vw;
+    }
+
+    legend, label{
+        font-family: "Garamond";
+        font-weight: bold;
+
+        color: orange;
+    }
+
+    form>div{
+        display: flex;
+        flex-direction: row;
+    }
+
+    input[type="radio"]{
+        height: 80%;
+    }
+
+    label{
+        font-size: .8em;
+    }
+
+</style>

@@ -1,0 +1,151 @@
+<link rel="stylesheet" type="text/css" href="../css/default.css">
+
+
+<div class="parchemin"> 
+    <p>Déplacez deux bouts de bois pour former deux carrés.</p>
+    </div>
+    
+    <div id="content" style="display: flex;">
+        <img src="../Images/allumette.png" id="m1" style="top:10vw;left:5vw;transform:rotate(0deg);" class="matchstick" onmousedown="SwitchObjectDragged(this.id, true)" onmouseup="SwitchObjectDragged(this.id, false)">
+        <img src="../Images/allumette.png" id="m2" style="top:10vw;left:17vw;transform:rotate(0deg);" class="matchstick" onmousedown="SwitchObjectDragged(this.id, true)" onmouseup="SwitchObjectDragged(this.id, false)">
+        <img src="../Images/allumette.png" id="m3" style="top:10vw;left:29vw;transform:rotate(0deg);" class="matchstick" onmousedown="SwitchObjectDragged(this.id, true)" onmouseup="SwitchObjectDragged(this.id, false)">
+        <img src="../Images/allumette.png" id="m4" style="top:17vw;left:35vw;transform:rotate(90deg);" class="matchstick" onmousedown="SwitchObjectDragged(this.id, true)" onmouseup="SwitchObjectDragged(this.id, false)">
+        <img src="../Images/allumette.png" id="m5" style="top:29vw;left:35vw;transform:rotate(90deg);" class="matchstick" onmousedown="SwitchObjectDragged(this.id, true)" onmouseup="SwitchObjectDragged(this.id, false)">
+        <img src="../Images/allumette.png" id="m6" style="top:41vw;left:35vw;transform:rotate(90deg);" class="matchstick" onmousedown="SwitchObjectDragged(this.id, true)" onmouseup="SwitchObjectDragged(this.id, false)">
+        <img src="../Images/allumette.png" id="m7" style="top:48vw;left:29vw;transform:rotate(180deg);" class="matchstick" onmousedown="SwitchObjectDragged(this.id, true)" onmouseup="SwitchObjectDragged(this.id, false)">
+        <img src="../Images/allumette.png" id="m8" style="top:48vw;left:17vw;transform:rotate(180deg);" class="matchstick" onmousedown="SwitchObjectDragged(this.id, true)" onmouseup="SwitchObjectDragged(this.id, false)">
+        <img src="../Images/allumette.png" id="m9" style="top:48vw;left:5vw;transform:rotate(180deg);" class="matchstick" onmousedown="SwitchObjectDragged(this.id, true)" onmouseup="SwitchObjectDragged(this.id, false)">
+        <img src="../Images/allumette.png" id="m10" style="top:30vw;left:0vw;transform:rotate(-90deg);" class="matchstick" onmousedown="SwitchObjectDragged(this.id, true)" onmouseup="SwitchObjectDragged(this.id, false)">
+        <img src="../Images/allumette.png" id="m11" style="top:42vw;left:0vw;transform:rotate(-90deg);" class="matchstick" onmousedown="SwitchObjectDragged(this.id, true)" onmouseup="SwitchObjectDragged(this.id, false)">
+        <img src="../Images/allumette.png" id="m12" style="top:24vw;left:6vw;transform:rotate(0deg);" class="matchstick" onmousedown="SwitchObjectDragged(this.id, true)" onmouseup="SwitchObjectDragged(this.id, false)">
+        <img src="../Images/allumette.png" id="m13" style="top:17vw;left:17vw;transform:rotate(-90deg);" class="matchstick" onmousedown="SwitchObjectDragged(this.id, true)" onmouseup="SwitchObjectDragged(this.id, false)">
+        <img src="../Images/allumette.png" id="m14" style="top:40vw;left:17vw;transform:rotate(90deg);" class="matchstick" onmousedown="SwitchObjectDragged(this.id, true)" onmouseup="SwitchObjectDragged(this.id, false)">
+    </div>
+
+    
+    
+    <style>
+        body{
+            overflow: hidden;
+            margin:0;
+        }    
+    
+        .matchstick{
+            position: absolute;
+            width: 10vw;
+            height: 1vw;
+            cursor: pointer;
+            user-drag: none; 
+            user-select: none;
+            -moz-user-select: none;
+            -webkit-user-drag: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+        }
+    
+    </style>
+    
+    <script>
+    
+        // --- DRAG n DROP ---
+        var draggedObject = null;
+        var objsel = null;
+        var bonneAlumette;
+        var vertical =0;
+        var horizontal= 0;
+        var nbsel =0;
+    
+        document.onmousemove = FollowCursorPosition;
+    
+        function FollowCursorPosition(event){
+            //	var selected = draggedObject.id;
+            
+    
+            if (draggedObject && draggedObject.id == objsel){
+                var e = event || window.event;
+                draggedObject.style.left = e.clientX-(draggedObject.clientWidth/2);
+                draggedObject.style.top  = e.clientY-(draggedObject.clientHeight/2);
+            }
+            
+        }
+    
+        function SwitchObjectDragged(objId, selected){
+    
+            if(!document.getElementById(objId).dataset.movable && nbsel<2)
+            {
+                objsel = objId;
+                document.getElementById(objId).dataset.movable="true";
+                nbsel++;
+            }
+            else if(document.getElementById(objId).dataset.movable)
+            {
+                objsel = objId;
+            }
+            if (!selected)
+            {
+                //console.log('coucou');
+                verif();
+                draggedObject = null;
+                return;
+                
+            }
+                
+            console.log(document.getElementById(objId).dataset.movable);
+            if (document.getElementById(objId).dataset.movable)
+            {
+                draggedObject = document.getElementById(objId);
+            }
+    
+            
+        }
+    
+        function verif()
+        {
+            //34.5%
+            //10,2%
+    
+            //get el by id
+            bonneAlumette = document.getElementById('m13');
+            bonneAlumette1 = document.getElementById('m14');
+    
+            console.log(bonneAlumette);
+            //get left et top
+            vertical = parseInt(bonneAlumette.style.top);
+            horizontal = parseInt(bonneAlumette.style.left);
+            vertical1 = parseInt(bonneAlumette1.style.top);
+            horizontal1 = parseInt(bonneAlumette1.style.left);
+    
+            console.log('vertical: '+vertical);
+    
+            console.log('horizontal: '+horizontal);
+            //divise les deux pars la largeur du body
+            vertical = vertical/window.innerWidth;
+            horizontal = horizontal/window.innerWidth;
+            vertical1 = vertical1/window.innerWidth;
+            horizontal1 = horizontal1/window.innerWidth;
+            //compare les valeurs
+    
+            console.log('vertical div : '+vertical);
+    
+            console.log('horizontal div : '+horizontal);
+
+            console.log('vertical1 div : '+vertical1);
+    
+            console.log('horizontal1 div : '+horizontal1);
+    
+            if (vertical>0.16 && vertical<0.18 && horizontal>0.001 && horizontal<0.007 && vertical1>0.16 && vertical1<0.18 && horizontal1>0.10 && horizontal1<0.12)
+                {
+                    console.log('BRAVO le VEAU')
+                    alert('BRAVO le VEAU');
+                }
+
+                if (vertical1>0.16 && vertical1<0.18 && horizontal1>0.001 && horizontal1<0.007 && vertical>0.16 && vertical<0.18 && horizontal>0.10 && horizontal<0.12)
+                {
+                    console.log('BRAVO le VEAU')
+                    alert('BRAVO le VEAU');
+                }
+        }
+    
+    
+    
+    </script>

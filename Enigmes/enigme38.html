@@ -1,0 +1,54 @@
+<link rel="stylesheet" type="text/css" href="../css/default.css">
+
+
+<body id="content">
+    <div class="parchemin">
+        <p>
+            Le secteur de la cathédrale de Strasbourg se trouve à l’intersection de deux axes fondateurs du camp romain argentoratum : le cardo et le décumanus ? Quelles sont les deux rues reliées à ces deux axes ?
+        </p>
+    </div>
+
+    <form>
+        <div>
+            <label for="rue1">Cardo :</label>
+            <input type="text" name="rue1">
+        </div>
+        
+        <div>
+            <label for="rue2">Décumanus :</label>
+            <input type="text" name="rue2">
+        </div>
+        
+        <input type="submit" value="Valider">
+    </form>
+
+    <!-- rue des Hallebardes | rue du Dôme -->
+
+</body>
+
+<style>
+    body{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        overflow-y: hidden;
+        height: 100vh;
+    }
+
+    form{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+
+        height: 50vh;
+    }
+
+    label{
+        color: orange;
+        font-weight: bold;
+        font-size: 1.2em;
+    }
+</style>

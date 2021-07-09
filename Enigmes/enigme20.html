@@ -1,0 +1,141 @@
+<link rel="stylesheet" type="text/css" href="../css/default.css">
+
+
+<body id="content">
+    <div class="row">
+        <img src="../Images/cadena.png">
+        <div class="chiffres">
+            <div>1</div>
+            <div>4</div>
+            <div>5</div>
+            <div>6</div>
+        </div>
+        <div class="text">Aucun chiffre n'est correct.</div>
+    </div>
+
+    <div class="row">
+        <img src="../Images/cadena.png">
+        <div class="chiffres">
+            <div>6</div>
+            <div>2</div>
+            <div>1</div>
+            <div>4</div>
+        </div>
+        <div class="text">Un chiffre est correct mais mal placé.</div>
+    </div>
+
+    <div class="row">
+        <img src="../Images/cadena.png">
+        <div class="chiffres">
+            <div>2</div>
+            <div>9</div>
+            <div>5</div>
+            <div>0</div>
+        </div>
+        <div class="text">Un chiffre est correct et bien placé.</div>
+    </div>
+
+    <div class="row">
+        <img src="../Images/cadena.png">
+        <div class="chiffres">
+            <div>4</div>
+            <div>8</div>
+            <div>6</div>
+            <div>5</div>
+        </div>
+        <div class="text">Un chiffre est correct et bien placé.</div>
+    </div>
+
+    <div class="row">
+        <img src="../Images/cadena.png">
+        <div class="chiffres">
+            <div>7</div>
+            <div>1</div>
+            <div>6</div>
+            <div>4</div>
+        </div>
+        <div class="text">Un chiffre est correct et mal placé.</div>
+    </div>
+
+    <div class="row">
+        <img src="../Images/cadena.png">
+        <div class="chiffres">
+            <div>2</div>
+            <div>4</div>
+            <div>6</div>
+            <div>3</div>
+        </div>
+        <div class="text">Deux chiffres sont corrects et bien placés.</div>
+    </div>
+
+    <form method="POST">
+        <label for="answer">Code ?</label>
+        <input type="number" name="answer">
+        <input type="submit" value="Valider">
+    </form>
+    
+    <!--Réponse : 2873 -->
+</body>
+
+<style>
+    table{
+        border-collapse: collapse;
+
+        width: 100%;
+        text-align: center;
+    }
+
+    td{
+        border: solid 2px black;
+        height: 1vw;
+    }
+
+    td:last-child{
+        border: none;
+        text-align: left;
+    }
+
+    img{
+        height: 10vh;
+    }
+
+    .row{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+
+        border-bottom: solid 10px rgba(0, 0, 0, .3);
+        width: 100vw;
+    }
+
+    .chiffres{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+
+        height: 12vh;
+
+        font-size: 1.2em;
+        color: orange;
+        filter: drop-shadow(0 0 5px rgba(0, 0, 0, .5));
+    }
+
+    .chiffres>div{
+        background-color: rgba(150, 100, 0, .5);
+        border-radius: 5px;
+        filter: drop-shadow(0 0 5px rgba(0, 0, 0, .5));
+        margin-right: 10%;
+    }
+
+    .text{
+        width: 50%;
+        font-size: 1em;
+        color: orange;
+    }
+
+    label{
+        color: orange;
+    }
+</style>

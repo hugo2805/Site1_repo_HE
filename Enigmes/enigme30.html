@@ -1,0 +1,127 @@
+<link rel="stylesheet" type="text/css" href="../css/default.css">
+
+
+<body id="content">
+    <form method="POST">
+        <div class="parchemin">
+            <p>
+                Remplissez ce triangle à trous :
+            </p>
+        </div>
+
+        <div id="pyramide">
+            <div class="row">
+                <div class="slot">111</div>
+            </div>
+            <div class="row">
+                <div class="slot"><input type="number" name="slot21" placeholder="--"></div>
+                <div class="space"></div>
+                <div class="slot"><input type="number" name="slot22" placeholder="--"></div>
+            </div>
+            <div class="row">
+                <div class="slot">22</div>
+                <div class="space"></div>
+                <div class="slot"><input type="number" name="slot32" placeholder="--"></div>
+                <div class="space"></div>
+                <div class="slot">23</div>
+            </div>
+            <div class="row">
+                <div class="slot"><input type="number" name="slot41" placeholder="--"></div>
+                <div class="space"></div>
+                <div class="slot"><input type="number" name="slot42" placeholder="--"></div>
+                <div class="space"></div>
+                <div class="slot"><input type="number" name="slot43" placeholder="--"></div>
+                <div class="space"></div>
+                <div class="slot"><input type="number" name="slot44" placeholder="--"></div>
+            </div>
+            <div class="row">
+                <div class="slot">3</div>
+                <div class="space"></div>
+                <div class="slot"><input type="number" name="slot52" placeholder="--"></div>
+                <div class="space"></div>
+                <div class="slot"><input type="number" name="slot53" placeholder="--"></div>
+                <div class="space"></div>
+                <div class="slot"><input type="number" name="slot54" placeholder="--"></div>
+                <div class="space"></div>
+                <div class="slot">6</div>
+            </div>
+        </div>
+
+        <input type="submit" value="Valider">
+    </form>
+
+    <!-- Réponse :
+        111
+        55 56
+        22 33 23
+        5 17 16 77
+        3 2 15 1 6
+    -->
+
+</body>
+
+<style>
+    form{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+
+        width: 100vw;
+    }
+
+    input[type="number"]{
+        width: 100%;
+        height: 100%;
+
+        background-color: rgba(0, 0, 0, 0);
+    }
+
+    img{
+        height: 50vh;
+    }
+
+    .row{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+
+        position: relative;
+
+        margin-bottom: 2vw;
+        padding-top: 2vw;
+    }
+
+    .slot{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        font-size: 2em;
+        color: orange;
+        filter: drop-shadow(0 0 5px rgba(0, 0, 0, 1));
+
+        width: 7vh;
+        height: 7vh;
+    }
+
+    #pyramide{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        background-image: url("../Images/pyramide.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center;
+
+        width: 100vw;
+        height: 50vh;
+    }
+
+    .space{
+        width: 5vw;
+    }
+</style>

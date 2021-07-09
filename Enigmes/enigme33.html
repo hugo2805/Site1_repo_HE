@@ -1,0 +1,156 @@
+<link rel="stylesheet" type="text/css" href="../css/default.css">
+
+
+<body id="content">
+    <div class="parchemin">
+        <p>
+            Colorez les ronds de telle sorte que le chiffre indique le nombre de ronds colorés qui l’entourent.
+        </p>
+    </div>
+    
+    <table>
+        <tr>
+            <td id="dot11" class="dot" onclick="ToggleDot(0, 0)"></td>
+            <td></td>
+            <td id="dot12" class="dot" onclick="ToggleDot(0, 1)"></td>
+            <td></td>
+            <td id="dot13" class="dot" onclick="ToggleDot(0, 2)"></td>
+            <td></td>
+            <td id="dot14" class="dot" onclick="ToggleDot(0, 3)"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="slot">2</td>
+            <td></td>
+            <td class="slot">2</td>
+            <td></td>
+            <td class="slot">3</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td id="dot21" class="dot" onclick="ToggleDot(1, 0)"></td>
+            <td></td>
+            <td id="dot22" class="dot" onclick="ToggleDot(1, 1)"></td>
+            <td></td>
+            <td id="dot23" class="dot" onclick="ToggleDot(1, 2)"></td>
+            <td></td>
+            <td id="dot24" class="dot" onclick="ToggleDot(1, 3)"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="slot">3</td>
+            <td></td>
+            <td class="slot">2</td>
+            <td></td>
+            <td class="slot">2</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td id="dot31" class="dot" onclick="ToggleDot(2, 0)"></td>
+            <td></td>
+            <td id="dot32" class="dot" onclick="ToggleDot(2, 1)"></td>
+            <td></td>
+            <td id="dot33" class="dot" onclick="ToggleDot(2, 2)"></td>
+            <td></td>
+            <td id="dot34" class="dot" onclick="ToggleDot(2, 3)"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="slot">4</td>
+            <td></td>
+            <td class="slot">4</td>
+            <td></td>
+            <td class="slot">2</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td id="dot41" class="dot" onclick="ToggleDot(3, 0)"></td>
+            <td></td>
+            <td id="dot42" class="dot" onclick="ToggleDot(3, 1)"></td>
+            <td></td>
+            <td id="dot43" class="dot" onclick="ToggleDot(3, 2)"></td>
+            <td></td>
+            <td id="dot44" class="dot" onclick="ToggleDot(3, 3)"></td>
+        </tr>
+    </table>
+
+</body>
+
+<style>
+    table{
+        width: 50vh;
+        height: 50vh;
+    }
+
+    .dot{
+        width: 2vh;
+        height: 2vh;
+
+        border: solid 2px orange;
+        border-radius: 2vh;
+        filter: drop-shadow(0 0 2px rgba(0, 0, 0, 1));
+    }
+
+    .slot{
+        width: 5vh;
+        height: 5vh;
+
+        font-size: 2em;
+        text-align: center;
+        color: orange;
+        filter: drop-shadow(0 0 2px rgba(0, 0, 0, 1));
+    }
+
+    form{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+</style>
+
+<script>
+    var matrix = [
+        [0,0,0,0],
+        [0,0,0,0],
+        [0,0,0,0],
+        [0,0,0,0]
+    ];
+
+    var matrixWon = [
+        [0,1,1,1],
+        [1,0,0,1],
+        [1,1,1,0],
+        [1,1,1,0]
+    ];
+
+    var dots = document.getElementsByClassName("dot");
+    
+    function ToggleDot(x, y){
+        if (matrix[x][y] == 1)
+            matrix[x][y] = 0;
+        else
+            matrix[x][y] = 1;
+        Update();
+        IsWon();
+    }
+
+    function Update(){
+        for (var i = 0; i < 4; i++)
+            for (var j = 0; j < 4; j++)
+                if (matrix[i][j] == 0)
+                    dots[4*i+j].style.backgroundColor = "transparent";
+                else
+                    dots[4*i+j].style.backgroundColor = "orange";
+    }
+
+    function IsWon(){
+        var isWon = true;
+        for (var i = 0; i < 4; i++)
+            for (var j = 0; j < 4; j++)
+                if (matrix[i][j] != matrixWon[i][j])
+                    isWon = false;
+        if (isWon)
+            alert("VICTORY !");
+    }
+
+</script>

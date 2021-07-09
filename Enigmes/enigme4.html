@@ -1,0 +1,146 @@
+<link rel="stylesheet" type="text/css" href="../css/default.css">
+
+
+<div id="content">
+    <div class="parchemin">
+        <p>
+            Les trois premiers flacons sont remplis de poussière de temps tandis que les trois suivants sont vides.<br>
+            Quel flacon devez-vous déplacer pour alterner un flacon plein et un flacon vide en ne touchant qu’un seul flacon ?<br>
+        </p>
+    </div>
+
+    <div>
+        <div style="display: flex; height: 100%;">
+            <div id="flacon1" class="flacon full" onclick="plein(1)">
+                <div class="liquide"></div>
+            </div>
+            
+            <div id="flacon2" class="flacon full" onclick="plein(2)">
+                <div class="liquide"></div>
+            </div>
+
+            <div id="flacon3" class="flacon full" onclick="plein(3)">
+                <div class="liquide"></div>
+            </div>
+
+            <div id="flacon4" class="flacon" onclick="vide(4)">
+                <div class="liquide"></div>
+            </div>
+
+            <div id="flacon5" class="flacon" onclick="vide(5)">
+                <div class="liquide"></div>
+            </div>
+
+            <div id="flacon6" class="flacon"onclick="vide(6)">
+                <div class="liquide"></div>
+            </div>
+        </div>
+
+        <div id="chiffres" style="display: flex;">
+            <div class="chiffre">1</div>
+            <div class="chiffre">2</div>
+            <div class="chiffre">3</div>
+            <div class="chiffre">4</div>
+            <div class="chiffre">5</div>
+            <div class="chiffre">6</div>
+        </div>
+    </div>
+    
+
+    <form method="POST">
+        <input type="button" value="Valider" onclick="verif()">
+        <input type="button" value="Recommencer" onclick="reload()">
+    </form>
+
+    <!--réponse : flacon 2 vers flacon 5 -->
+</div>
+
+<style>
+    .flacon{
+        border-bottom: orange 2px solid;
+        border-right: orange 2px solid;
+        border-left: orange solid;
+        border-bottom-right-radius: 50px ;
+        border-bottom-left-radius: 50px ;
+        overflow: hidden;
+        display:flex;
+        align-items: flex-end;
+        width: 10%;
+        height: 100%;
+        margin : 10px;
+        max-width: 40px;
+        min-width: 30px;
+        max-height: 100px;
+    }
+
+    .chiffre{
+        border: solid 2px;
+        border-radius: 50px;
+        width: 100%;
+        height: 100%;
+        margin : 10px;
+        max-width: 40px;
+        min-width: 30px;
+        display: flex;
+        justify-content: center;
+        border-color: rgb(204, 178, 91);
+        color: rgb(204, 178, 91);
+    }
+
+    #chiffres{
+        margin-top: 5px;
+    }
+
+    .liquide{
+        transition: height 1s ease-in-out;
+        height: 0%; 
+        width: 100%; 
+        background: url(../Images/Texture_Liquide.gif) rgb(0, 109, 128);
+        background-size: 100% 100%;
+    }
+
+    .flacon.full .liquide{
+        height: 50%;
+    }
+
+    .flacon.full.selected{
+        filter: drop-shadow(0px 0px 5px yellow);
+    }
+</style>
+
+<script>
+    var prems = 0;
+    var second = 0;
+
+    function plein(prems1)
+    {
+        if (!prems)
+        {
+            document.getElementById("flacon"+prems1).classList.add("selected");
+            prems = prems1;
+        }
+    }
+
+    function vide(second1)
+    {
+        if(prems && !second)
+        {
+            document.getElementById("flacon"+second1).classList.add("full");
+            document.getElementById("flacon"+prems).classList.remove("full");
+            second = second1;
+        }
+    }
+
+    function verif()
+    {
+        if (prems*1==2 && second*1 ==5)
+            console.log('BRAVO le VEAU');
+        else
+            console.log('DOMMAGE');
+    }
+
+    function reload()
+    {
+        document.location.reload();
+    }
+</script>

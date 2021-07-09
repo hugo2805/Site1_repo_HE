@@ -1,0 +1,91 @@
+<link rel="stylesheet" type="text/css" href="../css/default.css">
+
+
+<body>
+    <table id="grid">
+        <tr><td><img src="../Images/rouleau.png"></td> <td><img src="../Images/poussiere.png"></td> <td><img src="../Images/poussiere.png"></td> <td><img src="../Images/rouleau.png"></td><td>18</td></tr>
+        <tr><td><img src="../Images/montre.png"></td> <td><img src="../Images/poussiere.png"></td> <td><img src="../Images/engrenage.png"></td> <td><img src="../Images/rouleau.png"></td><td>25</td></tr>
+        <tr><td><img src="../Images/montre.png"></td> <td><img src="../Images/rouleau.png"></td> <td><img src="../Images/engrenage.png"></td> <td><img src="../Images/engrenage.png"></td><td>29</td></tr>
+        <tr><td><img src="../Images/montre.png"></td> <td><img src="../Images/montre.png"></td> <td><img src="../Images/poussiere.png"></td> <td><img src="../Images/rouleau.png"></td><td>23</td></tr>
+        <tr><td>25</td><td>21</td><td>28</td><td>21</td>          </tr>
+    </table>
+
+    <div id="answer">
+        <form method="POST">
+            <table>
+                <tr>
+                    <td><img src="../Images/rouleau.png"></td>
+                    <td><img src="../Images/poussiere.png"></td>
+                    <td><img src="../Images/engrenage.png"></td>
+                    <td><img src="../Images/montre.png"></td>
+                </tr>
+                <tr>
+                    <td><input type="number" name="triangle" maxlength="2" placeholder="--"></td>
+                    <td><input type="number" name="losange" maxlength="2" placeholder="--"></td>
+                    <td><input type="number" name="cercle" maxlength="2" placeholder="--"></td>
+                    <td><input type="number" name="carre" maxlength="2" placeholder="--"></td>
+                </tr>
+            </table>
+            <input type="submit" value="Valider">
+        </form>
+    </div>
+    
+    <!--Réponse : <img src="../Images/rouleau.png">4 <img src="../Images/poussiere.png">5 <img src="../Images/engrenage.png">9 <img src="../Images/montre.png">7 -->
+</body>
+
+<style>
+
+    body{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+
+        height: 100vh;
+
+        overflow-y: hidden;
+    }
+
+    #grid{
+        border-collapse: collapse;
+        font-size: 3em;
+    }
+
+    td{
+        text-align: center;
+        border: solid 3px black;
+        width: 10vw;
+        height: 10vw;
+    }
+
+    #answer{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 60%;
+    }
+
+    form table tr:first-child{
+        font-size: 3em;
+    }
+
+    input{
+        width: 100%;
+        height: 100%;
+
+        text-align: center;
+        font-size: 2em;
+    }
+
+    img{
+        height: 5vh;
+        filter: drop-shadow(0 0 5px rgba(0, 0, 0, 1));
+    }
+
+    td{
+        color: orange;
+        border: solid 2px #5b390b;
+    }
+
+</style>

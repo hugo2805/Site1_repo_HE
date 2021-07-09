@@ -1,0 +1,150 @@
+<link rel="stylesheet" type="text/css" href="../css/default.css">
+
+
+<body id="content">
+    <div class="row">
+        <div>
+            <div class="dot" style="background-color: yellow"></div>
+            <div class="dot" style="background-color: black"></div>
+            <div class="dot" style="background-color: red"></div>
+        </div>
+        
+        <p class="text">Aucune des lampes n'est correcte.</p>
+    </div>
+    <div class="row">
+        <div>
+            <div class="dot" style="background-color: orange"></div>
+            <div class="dot" style="background-color: blue"></div>
+            <div class="dot" style="background-color: yellow"></div>
+        </div>
+        
+        <p class="text">Une lampe est correcte mais mal placée.</p>
+    </div>
+    <div class="row">
+        <div>
+            <div class="dot" style="background-color: orange"></div>
+            <div class="dot" style="background-color: blue"></div>
+            <div class="dot" style="background-color: magenta"></div>
+        </div>
+        
+        <p class="text">Deux lampes sont correctes et mal placées.</p>
+    </div>
+    <div class="row">
+        <div>
+            <div class="dot" style="background-color: red"></div>
+            <div class="dot" style="background-color: magenta"></div>
+            <div class="dot" style="background-color: lime"></div>
+        </div>
+        
+        <p class="text">Deux lampes sont correctes et une bien placée.</p>
+    </div>
+    <div class="row">
+        <div>
+            <div class="dot" style="background-color: yellow"></div>
+            <div class="dot" style="background-color: lime"></div>
+            <div class="dot" style="background-color: orange"></div>
+        </div>
+        
+        <p class="text">Une lampe est correcte et mal placée.</p>
+    </div>
+    <div class="row">
+        <div>
+            <div class="dot" style="background-color: blue"></div>
+            <div class="dot" style="background-color: black"></div>
+            <div class="dot" style="background-color: magenta"></div>
+        </div>
+        
+        <p class="text">Deux lampes sont correctes et mals placées.</p>
+    </div>
+
+    <form method="POST">
+        <label for="answer">Code ?</label>
+        <div class="dot slot" style="background-color: yellow" onclick="NextColor(0)"></div>
+        <div class="dot slot" style="background-color: yellow" onclick="NextColor(1)"></div>
+        <div class="dot slot" style="background-color: yellow" onclick="NextColor(2)"></div>
+        <input class="answerSlots" type="text" name="color0" value="yellow" hidden>
+        <input class="answerSlots" type="text" name="color1" value="yellow" hidden>
+        <input class="answerSlots" type="text" name="color2" value="yellow" hidden>
+        <input type="submit" value="Valider">
+    </form>
+    
+    <!--Réponse : vert - magenta - blue -->
+
+</body>
+
+<style>
+    .row{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+
+        margin-bottom: 15px;
+        width: 100vw;
+    }
+
+    form{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+
+        width: 100vw;
+
+        background-color: rgba(0, 0, 0, 0.2);
+    }
+
+    .row>div{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    p{
+        width: 70vw;
+        height: 5vh;
+    }
+
+    .dot{
+        width: 5vh;
+        height: 5vh;
+        border-radius: 50%;
+
+        margin-right: 10px;
+        filter: drop-shadow(0 0 10px rgba(0, 0, 0, .5));
+    }
+
+    .slot{
+        cursor: pointer;
+    }
+
+    .text{
+        color: orange;
+    }
+
+    label{
+        color: orange;
+        font-size: 1.2em;
+    }
+</style>
+
+<script>
+    var colors = ["yellow", "black", "red", "orange", "blue", "magenta", "lime"];
+    var slots = document.getElementsByClassName("slot");
+    var answerSlots = document.getElementsByClassName("answerSlots");
+
+    function NextColor(nSlot){
+        var nextColor = null;
+        for (var i = 0; i < colors.length; i++)
+            if (slots[nSlot].style.backgroundColor == colors[i]){
+                if (i == colors.length-1)
+                    nextColor = colors[0];
+                else
+                    nextColor = colors[i+1];
+            }
+        slots[nSlot].style.backgroundColor = nextColor;
+        answerSlots[nSlot].value = nextColor;
+    }
+
+</script>

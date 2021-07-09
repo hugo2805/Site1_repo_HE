@@ -1,0 +1,70 @@
+body{
+	width: 100vw;
+	height: 100vh;
+
+	overflow: hidden;
+    margin: 0;
+
+    background-color: rgba(0, 0, 0, .5);
+    background-image: url("../Images/fond.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.parchemin{
+	width: 100vw;
+
+    background-image: url("../Images/parchemin.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, .5));
+}
+
+.parchemin p{
+	text-size-adjust: 90%;
+	padding: 20% 10% 5% 20%;
+
+	font-family: "Garamond";
+	font-weight: bold;
+}
+
+input{
+	background-color: rgba(0, 0, 0, .5);
+
+	border: none;
+	border-radius: 5px;
+	color: orange;
+
+	min-width: 10vh;
+	height: 10vh;
+
+    font-size: 1.2em;
+    font-family: "Garamond";
+    font-weight: bold;
+
+    -moz-appearance: textfield;
+}
+
+input[type="number"]{
+	text-align: center;
+}
+
+input:focus{
+	outline: none;
+	border: solid 2px orange;
+	box-shadow: 0 0 10px orange;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+#content{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+
+    height: 100vh;
+}

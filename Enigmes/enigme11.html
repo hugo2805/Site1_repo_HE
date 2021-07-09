@@ -1,0 +1,132 @@
+<link rel="stylesheet" type="text/css" href="../css/default.css">
+
+<div id="content" style="display: flex;">
+    <img src="../images/allumette.png" id="m1" style="top:20vw;left:0vw;transform:rotate(-45deg);" class="matchstick" onmousedown="SwitchObjectDragged(this.id, true)" onmouseup="SwitchObjectDragged(this.id, false)"></img>
+    <img src="../images/allumette.png" id="m2" style="top:20vw;left:0vw;transform:rotate(225deg);" class="matchstick" onmousedown="SwitchObjectDragged(this.id, true)" onmouseup="SwitchObjectDragged(this.id, false)"></img>
+    <img src="../images/allumette.png" id="m3" style="top:20vw;left:15vw;transform:rotate(-90deg);" class="matchstick" onmousedown="SwitchObjectDragged(this.id, true)" onmouseup="SwitchObjectDragged(this.id, false)"></img>
+    <img src="../images/allumette.png" id="m4" style="top:20vw;left:30vw;transform:rotate(-45deg);" class="matchstick" onmousedown="SwitchObjectDragged(this.id, true)" onmouseup="SwitchObjectDragged(this.id, false)"></img>
+    <img src="../images/allumette.png" id="m5" style="top:20vw;left:30vw;transform:rotate(225deg);" class="matchstick" onmousedown="SwitchObjectDragged(this.id, true)" onmouseup="SwitchObjectDragged(this.id, false)"></img>
+	<img src="../images/allumette.png" id="m6" style="top:20vw;left:52vw;transform:rotate(180deg);" class="matchstick" onmousedown="SwitchObjectDragged(this.id, true)" onmouseup="SwitchObjectDragged(this.id, false)"></img>
+	<img src="../images/allumette.png" id="m7" style="top:20vw;left:70vw;transform:rotate(250deg);" class="matchstick" onmousedown="SwitchObjectDragged(this.id, true)" onmouseup="SwitchObjectDragged(this.id, false)"></img>
+	<img src="../images/allumette.png" id="m8" style="top:20vw;left:78vw;transform:rotate(-70deg);" class="matchstick" onmousedown="SwitchObjectDragged(this.id, true)" onmouseup="SwitchObjectDragged(this.id, false)"></img>
+	<img src="../images/allumette.png" id="m9" style="top:40vw; left:35vw;transform:rotate(180deg);" class="matchstick" onmousedown="SwitchObjectDragged(this.id, true)" onmouseup="SwitchObjectDragged(this.id, false)"></img>
+	<img src="../images/allumette.png" id="m10" style="top:45vw;left:35vw;transform:rotate(180deg);" class="matchstick" onmousedown="SwitchObjectDragged(this.id, true)" onmouseup="SwitchObjectDragged(this.id, false)"></img>
+	<img src="../images/allumette.png" id="m11" style="top:65vw;left:11vw;transform:rotate(-45deg);" class="matchstick" onmousedown="SwitchObjectDragged(this.id, true)" onmouseup="SwitchObjectDragged(this.id, false)"></img>
+    <img src="../images/allumette.png" id="m12" style="top:65vw;left:11vw;transform:rotate(225deg);" class="matchstick" onmousedown="SwitchObjectDragged(this.id, true)" onmouseup="SwitchObjectDragged(this.id, false)"></img>
+	<img src="../images/allumette.png" id="m13" style="top:65vw;left:33vw;transform:rotate(-45deg);" class="matchstick" onmousedown="SwitchObjectDragged(this.id, true)" onmouseup="SwitchObjectDragged(this.id, false)"></img>
+    <img src="../images/allumette.png" id="m14" style="top:65vw;left:33vw;transform:rotate(225deg);" class="matchstick" onmousedown="SwitchObjectDragged(this.id, true)" onmouseup="SwitchObjectDragged(this.id, false)"></img>
+	<img src="../images/allumette.png" id="m7" style="top:65vw;left:55vw;transform:rotate(250deg);" class="matchstick" onmousedown="SwitchObjectDragged(this.id, true)" onmouseup="SwitchObjectDragged(this.id, false)"></img>
+	<img src="../images/allumette.png" id="m8" style="top:65vw;left:63vw;transform:rotate(-70deg);" class="matchstick" onmousedown="SwitchObjectDragged(this.id, true)" onmouseup="SwitchObjectDragged(this.id, false)"></img>
+</div>
+
+<div class="parchemin">
+	<p>
+		Quel allumette, devez-vous déplacer pour que l’opération soit juste ?
+	</p>
+</div>
+
+<style>
+	#content{
+		width: 100vw;
+		height: 50vh;
+	}
+
+	.matchstick{
+		position: absolute;
+		width: 15vh;
+		height: 1.5vh;
+		cursor: pointer;
+
+		filter: drop-shadow(0 0 5px black);
+	}
+
+</style>
+
+<script>
+
+	// --- DRAG n DROP ---
+	var draggedObject = null;
+	var objsel = null;
+	var bonneAlumette;
+	var vertical = 0;
+	var horizontal= 0;
+	var nbsel = 0;
+
+	document.onmousemove = FollowCursorPosition;
+
+	function FollowCursorPosition(event){
+		//	var selected = draggedObject.id;
+
+		if (draggedObject)
+			if (draggedObject.id == objsel){
+				var e = event || window.event;
+				draggedObject.style.left = e.clientX-(draggedObject.clientWidth/2);
+				draggedObject.style.top  = e.clientY-(draggedObject.clientHeight/2);
+			}
+	}
+
+	function SwitchObjectDragged(objId, selected){
+    
+	if(!document.getElementById(objId).dataset.movable && nbsel<1)
+	{
+		objsel = objId;
+		document.getElementById(objId).dataset.movable="true";
+		nbsel++;
+	}
+	else if(document.getElementById(objId).dataset.movable)
+	{
+		objsel = objId;
+	}
+	if (!selected)
+	{
+		//console.log('coucou');
+		verif();
+		draggedObject = null;
+		return;
+		
+	}
+		
+	console.log(document.getElementById(objId).dataset.movable);
+	if (document.getElementById(objId).dataset.movable)
+	{
+		draggedObject = document.getElementById(objId);
+	}
+
+	
+}
+	function verif()
+	{
+		//34.5%
+		//10,2%
+
+		//get el by id
+		bonneAlumette = document.getElementById('m3');
+
+		console.log(bonneAlumette);
+		//get left et top
+		vertical = parseInt(bonneAlumette.style.top);
+		horizontal = parseInt(bonneAlumette.style.left);
+
+		console.log('vertical: '+vertical);
+
+		console.log('horizontal: '+horizontal);
+		//divise les deux pars la largeur du body
+		vertical = vertical/window.innerWidth;
+		horizontal = horizontal/window.innerWidth;
+		//compare les valeurs
+
+		console.log('vertical div : '+vertical);
+
+		console.log('horizontal div : '+horizontal);
+
+		// TOP 20 LEFT 52
+		if (vertical>.18 && vertical<.22 && horizontal>.5 && horizontal<.54)
+			{
+				console.log('BRAVO le VEAU')
+				alert('BRAVO le VEAU');
+			}
+	}
+
+
+
+</script>
