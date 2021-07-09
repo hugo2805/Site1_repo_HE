@@ -32,7 +32,7 @@ input{
 	background-color: rgba(0, 0, 0, .5);
 
 	border: none;
-	border-radius: 5px;
+	border-radius: 5%;
 	color: orange;
 
 	min-width: 10vh;
