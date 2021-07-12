@@ -8,16 +8,16 @@
 </div>
     
     <div id="content" style="display: flex;">
-        <img src="../Images/allumette.png" id="m1" style="top:10vw;left:10vw;transform:rotate(-90deg);" class="matchstick" onmousedown="SwitchObjectDragged(this.id, true)" onmouseup="SwitchObjectDragged(this.id, false)">
-        <img src="../Images/allumette.png" id="m2" style="top:10vw;left: 14vw;transform:rotate(250deg);" class="matchstick" onmousedown="SwitchObjectDragged(this.id, true)" onmouseup="SwitchObjectDragged(this.id, false)">
-        <img src="../Images/allumette.png" id="m3" style="top:10vw;left:17vw;transform:rotate(-70deg);" class="matchstick" onmousedown="SwitchObjectDragged(this.id, true)" onmouseup="SwitchObjectDragged(this.id, false)">
-        <img src="../Images/allumette.png" id="m4" style="top:10vw;left:25vw;transform:rotate(180deg);" class="matchstick" onmousedown="SwitchObjectDragged(this.id, true)" onmouseup="SwitchObjectDragged(this.id, false)">
-        <img src="../Images/allumette.png" id="m5" style="top:10vw;left:32vw;transform:rotate(-90deg);" class="matchstick" onmousedown="SwitchObjectDragged(this.id, true)" onmouseup="SwitchObjectDragged(this.id, false)">
-        <img src="../Images/allumette.png" id="m6" style="top:10vw;left:35vw;transform:rotate(-90deg);" class="matchstick" onmousedown="SwitchObjectDragged(this.id, true)" onmouseup="SwitchObjectDragged(this.id, false)">
-        <img src="../Images/allumette.png" id="m7" style="top:9vw;left:43vw;transform:rotate(180deg);" class="matchstick" onmousedown="SwitchObjectDragged(this.id, true)" onmouseup="SwitchObjectDragged(this.id, false)">
-        <img src="../Images/allumette.png" id="m8" style="top:11vw;left:43vw;transform:rotate(180deg);" class="matchstick" onmousedown="SwitchObjectDragged(this.id, true)" onmouseup="SwitchObjectDragged(this.id, false)">
-        <img src="../Images/allumette.png" id="m9" style="top:10vw;left:55vw;transform:rotate(-70deg);" class="matchstick" onmousedown="SwitchObjectDragged(this.id, true)" onmouseup="SwitchObjectDragged(this.id, false)">
-        <img src="../Images/allumette.png" id="m10" style="top:10vw;left:52vw;transform:rotate(250deg);" class="matchstick" onmousedown="SwitchObjectDragged(this.id, true)" onmouseup="SwitchObjectDragged(this.id, false)">
+        <img src="../Images/allumette.png" id="m1" style="top:70vw;left:10vw;transform:rotate(-90deg);" class="matchstick" ontouchstart="SwitchObjectDragged(this.id, true)" ontouchend="SwitchObjectDragged(this.id, false)">
+        <img src="../Images/allumette.png" id="m2" style="top:70vw;left: 19vw;transform:rotate(250deg);" class="matchstick" ontouchstart="SwitchObjectDragged(this.id, true)" ontouchend="SwitchObjectDragged(this.id, false)">
+        <img src="../Images/allumette.png" id="m3" style="top:70vw;left:26vw;transform:rotate(-70deg);" class="matchstick" ontouchstart="SwitchObjectDragged(this.id, true)" ontouchend="SwitchObjectDragged(this.id, false)">
+        <img src="../Images/allumette.png" id="m4" style="top:70vw;left:42vw;transform:rotate(180deg);" class="matchstick" ontouchstart="SwitchObjectDragged(this.id, true)" ontouchend="SwitchObjectDragged(this.id, false)">
+        <img src="../Images/allumette.png" id="m5" style="top:70vw;left:60vw;transform:rotate(-90deg);" class="matchstick" ontouchstart="SwitchObjectDragged(this.id, true)" ontouchend="SwitchObjectDragged(this.id, false)">
+        <img src="../Images/allumette.png" id="m6" style="top:70vw;left:70vw;transform:rotate(-90deg);" class="matchstick" ontouchstart="SwitchObjectDragged(this.id, true)" ontouchend="SwitchObjectDragged(this.id, false)">
+        <img src="../Images/allumette.png" id="m7" style="top:100vw;left:30vw;transform:rotate(180deg);" class="matchstick" ontouchstart="SwitchObjectDragged(this.id, true)" ontouchend="SwitchObjectDragged(this.id, false)">
+        <img src="../Images/allumette.png" id="m8" style="top:105vw;left:30vw;transform:rotate(180deg);" class="matchstick" ontouchstart="SwitchObjectDragged(this.id, true)" ontouchend="SwitchObjectDragged(this.id, false)">
+        <img src="../Images/allumette.png" id="m9" style="top:100vw;left:56vw;transform:rotate(-70deg);" class="matchstick" ontouchstart="SwitchObjectDragged(this.id, true)" ontouchend="SwitchObjectDragged(this.id, false)">
+        <img src="../Images/allumette.png" id="m10" style="top:100vw;left:49vw;transform:rotate(250deg);" class="matchstick" ontouchstart="SwitchObjectDragged(this.id, true)" ontouchend="SwitchObjectDragged(this.id, false)">
     </div>
     
     <style>
@@ -34,8 +34,8 @@
     
         .matchstick{
             position: absolute;
-            width: 10vw;
-            height: 1vw;
+            width: 25vw;
+            height: 3vw;
             cursor: pointer;
         }
     
@@ -46,20 +46,19 @@
         var draggedObject = null;
         var objsel = null;
         var bonneAlumette;
-        var vertical =0;
-        var horizontal= 0;
-        var nbsel =0;
+        var vertical = 0;
+        var horizontal = 0;
+        var nbsel = 0;
     
-        document.onmousemove = FollowCursorPosition;
+        document.ontouchmove = FollowCursorPosition;
     
         function FollowCursorPosition(event){
             //	var selected = draggedObject.id;
-
-            if (draggedObject.id == objsel){
-                var e = event || window.event;
-                draggedObject.style.left = e.clientX-(draggedObject.clientWidth/2);
-                draggedObject.style.top  = e.clientY-(draggedObject.clientHeight/2);
-            }
+                if (draggedObject.id == objsel){
+                    var e = event || window.event;
+                    draggedObject.style.left = e.touches[0].clientX-(draggedObject.clientWidth/2);
+                    draggedObject.style.top = e.touches[0].clientY-(draggedObject.clientHeight/2);
+                }
             
         }
     
@@ -110,9 +109,9 @@
     
             console.log('horizontal: '+horizontal);
 
-            console.log('vertical: '+vertical1);
+            console.log('vertical1: '+vertical1);
     
-            console.log('horizontal: '+horizontal1);
+            console.log('horizontal1: '+horizontal1);
             //divise les deux pars la largeur du body
             vertical = vertical/window.innerWidth;
             horizontal = horizontal/window.innerWidth;
@@ -125,7 +124,7 @@
     
             console.log('horizontal div : '+horizontal);
     
-            if (vertical>0.09 && vertical<0.11 && horizontal>0.20 && horizontal<0.25 || vertical1>0.09 && vertical1<0.11 && horizontal1>0.20 && horizontal1<0.25)
+            if (vertical>0.60 && vertical<0.70 && horizontal>0.40 && horizontal<0.50 || vertical1>0.60 && vertical1<0.70 && horizontal1>0.40 && horizontal1<0.50)
             {
                 console.log('BRAVO le VEAU')
                 alert('BRAVO le VEAU');
