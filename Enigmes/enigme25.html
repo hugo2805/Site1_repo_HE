@@ -1,7 +1,7 @@
 <link rel="stylesheet" type="text/css" href="../css/default.css">
 
 
-<body id="content">
+<div id="content">
     <div class="parchemin">
         <p style="text-align: center; letter-spacing: .5em;">
             1<br>
@@ -16,10 +16,20 @@
     
 
     <form method="POST">
-        <input type="number" name="answer">
-        <input type="submit" value="Valider">
+        <input id="Rep" type="text" value="">
+        <input type="button" value="Valider" ontouchstart="Verification()">
     </form>
     
     <!--Réponse : 13112221 -->
 
-</body>
+</div>
+
+<script>
+
+    function Verification() {
+        var reponse = document.getElementById("Rep").value;
+        console.log(reponse);
+        window.location.href = "uniwebview://feedback?anwser=" + reponse;
+    }
+
+</script>

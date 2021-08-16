@@ -10,12 +10,12 @@
 
     <form method="POST">
         <div>
-            <input type="submit" value="" style="background-image: url('../Images/enigme 16_5.png')">
-            <input type="button" style="background-image: url('../Images/enigme 16_F.png')">
+            <input type="button" ontouchstart="valide()" value="" style="background-image: url('../Images/enigme 16_5.png')">
+            <input type="button" ontouchstart="invalide()" style="background-image: url('../Images/enigme 16_F.png')">
         </div>
         <div>
-            <input type="button" style="background-image: url('../Images/enigme 16_K.png')">
-            <input type="button" style="background-image: url('../Images/enigme 16_Z.png')">
+            <input type="button" ontouchstart="invalide()" style="background-image: url('../Images/enigme 16_K.png')">
+            <input type="button" ontouchstart="invalide()" style="background-image: url('../Images/enigme 16_Z.png')">
         </div>
     </form>
     
@@ -51,3 +51,15 @@
         filter: drop-shadow(0 0 10px rgba(255, 255, 255, 1));
     }
 </style>
+
+<script>
+
+	function valide() {
+		window.location.href = "uniwebview://feedback?anwser=" + 1;
+    }
+
+    function invalide() {
+        window.location.href = "uniwebview://feedback?anwser=" + 0;
+    }
+
+</script>

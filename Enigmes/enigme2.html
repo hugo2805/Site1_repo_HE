@@ -2,16 +2,27 @@
 
 <div id="content">
 	<div class="parchemin">
-	    <p>
-	        On me voit à chaque minute mais jamais dans une heure.<br>
-	        J’apparais deux fois par moments ou de temps en temps et si je suis la montre, je ne suis pas l’horloge, qui suis-je ?
-	    </p>
+		<p>
+			On me voit à chaque minute mais jamais dans une heure.<br>
+			J’apparais deux fois par moments ou de temps en temps et si je suis la montre, je ne suis pas l’horloge, qui suis-je ?
+		</p>
 
-	    <!--réponse : M-->
+		<!--réponse : M-->
 	</div>
 
 	<form method="POST">
-		<input type="text">
-		<input type="submit" value="Valider">
+		<input id="Rep" type="text" value="">
+		<input type="button" value="Valider" ontouchstart="Verification()">
 	</form>
 </div>
+
+<script>
+
+	function Verification()
+	{
+		var reponse = document.getElementById("Rep").value;
+		console.log(reponse);
+        window.location.href = "uniwebview://feedback?anwser=" + reponse;
+    }
+
+</script>

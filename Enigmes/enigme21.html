@@ -62,10 +62,10 @@
         <div class="dot slot" style="background-color: yellow" onclick="NextColor(0)"></div>
         <div class="dot slot" style="background-color: yellow" onclick="NextColor(1)"></div>
         <div class="dot slot" style="background-color: yellow" onclick="NextColor(2)"></div>
-        <input class="answerSlots" type="text" name="color0" value="yellow" hidden>
-        <input class="answerSlots" type="text" name="color1" value="yellow" hidden>
-        <input class="answerSlots" type="text" name="color2" value="yellow" hidden>
-        <input type="submit" value="Valider">
+        <input class="answerSlots" type="text" id="color0" value="yellow" hidden>
+        <input class="answerSlots" type="text" id="color1" value="yellow" hidden>
+        <input class="answerSlots" type="text" id="color2" value="yellow" hidden>
+        <input type="button" value="Valider" ontouchstart="Verification()">
     </form>
     
     <!--Réponse : vert - magenta - blue -->
@@ -104,7 +104,7 @@
     p {
         width: 70vw;
         height: 5vh;
-        font-size: 2.5em;
+        font-size: 4em;
     }
 
     .dot{
@@ -122,12 +122,12 @@
 
     .text {
         color: orange;
-        font-size: 2.5em;
+        font-size: 3em;
     }
 
     label{
         color: orange;
-        font-size: 2.5em;
+        font-size: 3em;
     }
 </style>
 
@@ -147,6 +147,23 @@
             }
         slots[nSlot].style.backgroundColor = nextColor;
         answerSlots[nSlot].value = nextColor;
+
+
+
+       
     }
+
+    function Verification() {
+
+        if (document.getElementById("color0").value == "lime" && document.getElementById("color1").value == "magenta" && document.getElementById("color2").value == "blue") {
+            window.location.href = "uniwebview://feedback?anwser=" + 1;
+        }
+        else
+        {
+            window.location.href = "uniwebview://feedback?anwser=" + 0;
+        }
+
+    }
+
 
 </script>

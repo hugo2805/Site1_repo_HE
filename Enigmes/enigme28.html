@@ -1,7 +1,7 @@
 <link rel="stylesheet" type="text/css" href="../css/default.css">
 
 
-<body id="content">
+<div id="content">
     <div class="parchemin">
         <p>
             Combien y a t'il de carré ?
@@ -11,12 +11,12 @@
     <img src="../Images/magic-square.png">
 
     <form method="POST">
-        <input type="number" name="answer">
-        <input type="submit" value="Valider">
+        <input id="Rep" type="text" value="">
+        <input type="button" value="Valider" ontouchstart="Verification()">
     </form>
 
     <!-- Réponse : 31 -->
-</body>
+</div>
 
 <style>
     img{
@@ -28,3 +28,13 @@
         height: 5vh;
     }
 </style>
+
+<script>
+
+    function Verification() {
+        var reponse = document.getElementById("Rep").value;
+        console.log(reponse);
+        window.location.href = "uniwebview://feedback?anwser=" + reponse;
+    }
+
+</script>

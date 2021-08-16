@@ -1,7 +1,7 @@
 <link rel="stylesheet" type="text/css" href="../css/default.css">
 
 
-<body id="content">
+<div id="content">
     <form method="POST">
         <div class="parchemin">
             <p>
@@ -14,40 +14,40 @@
                 <div class="slot">111</div>
             </div>
             <div class="row">
-                <div class="slot"><input type="number" name="slot21" placeholder="--"></div>
+                <div class="slot"><input type="text" id="slot21" value="" placeholder="--"></div>
                 <div class="space"></div>
-                <div class="slot"><input type="number" name="slot22" placeholder="--"></div>
+                <div class="slot"><input type="text" id="slot22" value="" placeholder="--"></div>
             </div>
             <div class="row">
                 <div class="slot">22</div>
                 <div class="space"></div>
-                <div class="slot"><input type="number" name="slot32" placeholder="--"></div>
+                <div class="slot"><input type="text" id="slot32" value="" placeholder="--"></div>
                 <div class="space"></div>
                 <div class="slot">23</div>
             </div>
             <div class="row">
-                <div class="slot"><input type="number" name="slot41" placeholder="--"></div>
+                <div class="slot"><input type="text" id="slot41" value="" placeholder="--"></div>
                 <div class="space"></div>
-                <div class="slot"><input type="number" name="slot42" placeholder="--"></div>
+                <div class="slot"><input type="text" id="slot42" value="" placeholder="--"></div>
                 <div class="space"></div>
-                <div class="slot"><input type="number" name="slot43" placeholder="--"></div>
+                <div class="slot"><input type="text" id="slot43" value="" placeholder="--"></div>
                 <div class="space"></div>
-                <div class="slot"><input type="number" name="slot44" placeholder="--"></div>
+                <div class="slot"><input type="text" id="slot44" value="" placeholder="--"></div>
             </div>
             <div class="row">
                 <div class="slot">3</div>
                 <div class="space"></div>
-                <div class="slot"><input type="number" name="slot52" placeholder="--"></div>
+                <div class="slot"><input type="text" id="slot52" value="" placeholder="--"></div>
                 <div class="space"></div>
-                <div class="slot"><input type="number" name="slot53" placeholder="--"></div>
+                <div class="slot"><input type="text" id="slot53" value="" placeholder="--"></div>
                 <div class="space"></div>
-                <div class="slot"><input type="number" name="slot54" placeholder="--"></div>
+                <div class="slot"><input type="text" id="slot54" value="" placeholder="--"></div>
                 <div class="space"></div>
                 <div class="slot">6</div>
             </div>
         </div>
 
-        <input type="submit" value="Valider">
+        <input type="button" value="Valider" ontouchstart="Verification()">
     </form>
 
     <!-- Réponse :
@@ -58,7 +58,17 @@
         3 2 15 1 6
     -->
 
-</body>
+</div>
+
+<script>
+
+    function Verification() {
+        var reponse = document.getElementById("slot21").value + document.getElementById("slot22").value + document.getElementById("slot32").value + document.getElementById("slot41").value + document.getElementById("slot42").value + document.getElementById("slot43").value + document.getElementById("slot44").value + document.getElementById("slot52").value + document.getElementById("slot53").value + document.getElementById("slot54").value;
+        console.log(reponse);
+        window.location.href = "uniwebview://feedback?anwser=" + reponse;
+    }
+
+</script>
 
 <style>
     form{
@@ -70,7 +80,8 @@
         width: 100vw;
     }
 
-    input[type="number"]{
+    input[type="text"]{
+        margin-left : 6vh;
         width: 100%;
         height: 100%;
         font-size: 1em;

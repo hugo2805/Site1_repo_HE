@@ -2,17 +2,27 @@
 
 <div id="content">
 	<div class="parchemin">
-	    <p>
-	    	Il y a 100 agents présents à l’Horlogerie cette année.<br>
-	        Il y a deux fois plus de nouvelles recrues que d’anciens agents et trois fois plus d’anciens agents que d’horlogers d’élites.<br>
-	        Combien l’Horlogerie a-t-elle recruté de nouveaux agents cette année ?<br>
-	    </p>
+		<p>
+			Il y a 100 agents présents à l’Horlogerie cette année.<br>
+			Il y a deux fois plus de nouvelles recrues que d’anciens agents et trois fois plus d’anciens agents que d’horlogers d’élites.<br>
+			Combien l’Horlogerie a-t-elle recruté de nouveaux agents cette année ?<br>
+		</p>
 
-	    <!--Réponse :  60 + 30 + 10 = 100 donc il y a 60 nouveaux agents-->
+		<!--Réponse :  60 + 30 + 10 = 100 donc il y a 60 nouveaux agents-->
 	</div>
 
 	<form method="POST">
-		<input type="text">
-		<input type="submit" value="Valider">
+		<input id="Rep" type="text" value="">
+		<input type="button" value="Valider" ontouchstart="Verification()">
 	</form>
 </div>
+
+<script>
+
+	function Verification() {
+		var reponse = document.getElementById("Rep").value;
+		console.log(reponse);
+		window.location.href = "uniwebview://feedback?anwser=" + reponse;
+	}
+
+</script>

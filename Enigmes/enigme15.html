@@ -4,17 +4,27 @@
 <div id="content">
     <div class="parchemin">
         <p>
-        	L’opératrice a allumé 36 petites bouger pour fêter Noël.<br>
-        	Un courant d’air en éteint 5.<br>
-        	Elle s’empresse d’aller fermer la fenêtre mais trop tard, 2 autres bougies s’éteignent.<br>
-        	Combien de bougies restera-t-il le lendemain ?
+            L’opératrice a allumé 36 petites bougies pour fêter Noël.<br>
+            Un courant d’air en éteint 5.<br>
+            Elle s’empresse d’aller fermer la fenêtre mais trop tard, 2 autres bougies s’éteignent.<br>
+            Combien de bougies restera-t-il le lendemain ?
         </p>
     </div>
 
     <form method="POST">
-    	<input type="number" name="answer" maxlength="2">
-    	<input type="submit" value="Valider">
+        <input id="Rep" type="text" value="">
+        <input type="button" value="Valider" ontouchstart="Verification()">
     </form>
-    
+
     <!--Réponse : 7 -->
 </div>
+
+<script>
+
+	function Verification() {
+		var reponse = document.getElementById("Rep").value;
+		console.log(reponse);
+		window.location.href = "uniwebview://feedback?anwser=" + reponse;
+	}
+
+</script>

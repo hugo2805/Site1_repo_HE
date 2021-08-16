@@ -9,13 +9,25 @@
     </div>
 
     <form>
-        <input type="submit" name="vrai" value="Vrai">
-        <input type="button" name="faux" value="Faux">
+        <input type="button" name="vrai" ontouchstart="Vrai()" value="Vrai">
+        <input type="button" name="faux"  ontouchstart="Faux()"value="Faux">
     </form>
-
+    
     <!-- Vrai -->
 
 </body>
+
+<script>
+
+    function Vrai() {
+        window.location.href = "uniwebview://feedback?anwser=" + 1;
+    }
+
+    function Faux() {
+        window.location.href = "uniwebview://feedback?anwser=" + 0;
+    }
+
+</script>
 
 <style>
     body{

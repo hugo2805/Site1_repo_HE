@@ -1,7 +1,7 @@
 <link rel="stylesheet" type="text/css" href="../css/default.css">
 
 
-<body id="content">
+<div id="content">
     <div class="parchemin">
         <p>
             <img src="../Images/clock.png"> + <img src="../Images/clock.png"> + <img src="../Images/clock.png"> = 30<br>
@@ -12,13 +12,23 @@
     </div>
 
     <form>
-        <input type="number" name="answer">
-        <input type="submit" value="Valider">
+        <input id="Rep" type="text" value="">
+        <input type="button" value="Valider" ontouchstart="Verification()">
     </form>
 
     <!-- 25 -->
 
-</body>
+</div>
+
+<script>
+
+    function Verification() {
+        var reponse = document.getElementById("Rep").value;
+        console.log(reponse);
+        window.location.href = "uniwebview://feedback?anwser=" + reponse;
+    }
+
+</script>
 
 <style>
     p{

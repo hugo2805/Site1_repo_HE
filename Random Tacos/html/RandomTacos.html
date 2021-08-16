@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Random Tacos</title>
+		<meta charset="utf-8"/>
+		<link rel="shortcut icon" type="image/x-icon" href="../Images/tacos.png"/>
+	</head>
+	<body>
+		<header>
+            <h1>La machine à tacos de TACOTOPIA</h1>
+
+            <p>
+                Bienvenue à Tacotopia, vous ne savez pas quoi mettre dans votre tacos? <br>
+                Rentrez quelques paramètres la la machine à tacos aléatoire et découvrez quelle recette la machine vous propose.
+            </p>
+		
+		</header>
+
+        <style>
+            body {
+                background-color: #E0AB3B;
+                display: flex;
+                justify-content: center;
+
+            }
+
+            fieldset{
+                border:groove 4px ;
+            }
+
+            div{
+               
+                display : flex;
+                justify-content : center;
+                align-items:flex-end;
+               
+            }
+
+            input{
+                margin: 10px;
+            }
+        </style>
+
+        <div>
+            
+
+            <form>
+                <fieldset>
+                    <legend>Tacos Random</legend>
+
+
+                    <label>Choix de la taille :</label><br>
+                    <select id="Taille">
+                        <option value="">--Taille--</option>
+                        <option value="M">Tacos M</option>
+                        <option value="L">Tacos L</option>
+                        <option value="XL">Tacos XL</option>
+                    </select><br>
+
+                    <label>Shouaitez vous un gratinage ?</label> <br>
+                    <label>Oui</label>
+                    <input type="radio" name="choix1" id="oui1">
+                    <label>Non</label>
+                    <input type="radio" name="choix1" id="non1" checked="checked">
+                    <br>
+
+                    <label>Shouaitez vous des crudités ?</label><br>
+                    <label>Oui</label>
+                    <input type="radio" name="choix2" id="oui2">
+                    <label>Non</label>
+                    <input type="radio" name="choix2" id="non2" checked="checked">
+                    <br>
+
+                    <label>Si Oui, Combien en désirez vous ?</label><br>
+                    <select id="crud">
+                        <option value="">--Quantité--</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select><br>
+
+                    <label>Shouaitez vous des sauces ?</label><br>
+                    <label>Oui</label>
+                    <input type="radio" name="choix3" id="oui3">
+                    <label>Non</label>
+                    <input type="radio" name="choix3" id="non3" checked="checked">
+                    <br>
+
+
+                    <label>Shouaitez vous des supléments ?</label><br>
+                    <label>Oui</label>
+                    <input type="radio" name="choix4" id="oui4">
+                    <label>Non</label>
+                    <input type="radio" name="choix4" id="non4" checked="checked">
+                    <br>
+
+                    <label>Si Oui, Combien en désirez vous ?</label><br>
+                    <select id="sup">
+                        <option value="">--Quantité--</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                    </select><br>
+
+                    <input type="button" value="Valider" onclick="VerifTaille()">
+                    <input type="button" value="Recommencer" onClick="window.location.reload();">
+
+
+
+                </fieldset>
+
+            </form>
+            <br>
+        </div>
+
+        <div>
+            <p id="result">
+
+            </p>
+        </div>
+            
+
+        
+
+		<footer>
+			
+			
+		</footer>
+
+
+		<script>
+			var gratinage = "sans gratinage";
+			var viande = "";
+			var Crudite = "";
+            var Taille = "";
+            var sauce = "Sans Sauce";
+            var sup = "";
+			//fonction de vérification de la taille du tacos 
+			function VerifTaille() {
+				var taille = document.getElementById("Taille").value;
+
+				switch (taille) {
+					case "M":
+						Taille = "Tacos M";
+                        RandomTacosM();
+						break;
+					case "L":
+                        Taille = "Tacos L";
+                        RandomTacosL();
+						break;
+					case "XL":
+                        Taille = "Tacos XL";
+                        RandomTacosXL();
+                        break;
+                }
+			}
+
+			
+			//fonction de création d'un tacos M random
+			function RandomTacosM() {
+
+				//Random de la viande
+				var numviande = getRandomInt(5);
+				viande = getRandomViande(numviande);
+
+                getAccompagnement();
+
+                AfficheResultat();
+				
+			}
+
+			//fonction de création d'un tacos L random
+			function RandomTacosL() {
+                var numviande1 = getRandomInt(5);
+                var numviande2 = getRandomInt(5);
+                var viande1 = getRandomViande(numviande1);
+                var viande2 = getRandomViande(numviande2);
+                viande = viande1 + ", " + viande2;
+
+                getAccompagnement();
+
+                AfficheResultat();
+
+			}
+
+			//fonction de création d'un tacos XL random
+			function RandomTacosXL() {
+                var numviande1 = getRandomInt(5);
+                var numviande2 = getRandomInt(5);
+                var numviande3 = getRandomInt(5);
+                var viande1 = getRandomViande(numviande1);
+                var viande2 = getRandomViande(numviande2);
+                var viande3 = getRandomViande(numviande3);
+                viande = viande1 + ", " + viande2 + ", " + viande3;
+
+                getAccompagnement();
+
+                AfficheResultat();
+			}
+
+			//Fonction de génération de chiffre random
+            function getRandomInt(max) {
+                return Math.floor(Math.random() * max);
+			}
+
+			//Fonction qui choisit la viande
+			function getRandomViande(numviande) {
+                switch (numviande) {
+                    case 0:
+                        viande = "Viande Hachée";
+                        break;
+                    case 1:
+                        viande = "Poulet";
+                        break;
+                    case 2:
+                        viande = "Cordon Bleu";
+                        break;
+                    case 3:
+                        viande = "Merguez";
+                        break;
+                    case 4:
+                        viande = "Tenders";
+                        break;
+				}
+
+				return viande;
+			}
+
+			function getAccompagnement() {
+                //Random du Gratinage
+                if (document.getElementById("oui1").checked) {
+                    numGrat = getRandomInt(11);
+                    gratinage = getRandomGratinage(numGrat);
+                }
+
+                //Random Crudité
+                if (document.getElementById("oui2").checked) {
+                    var quant = document.getElementById("crud").value;
+                    console.log(quant);
+                    var numCrud = [];
+                    var crudite = [];
+
+                    for (i = 0; i < quant; i++) {
+                        numCrud[i] = getRandomInt(7);
+                        crudite[i] = getRandomCrudite(numCrud[i]);
+                        Crudite += crudite[i] + ", ";
+                        console.log(Crudite);
+                    }
+                }
+                else {
+                    Crudite = "sans crudité";
+                }
+
+				//Random Sauce
+                if (document.getElementById("oui3").checked) {
+                    numSauce1 = getRandomInt(14);
+                    numSauce2 = getRandomInt(14);
+                    var sauce1 = getRandomSauce(numSauce1);
+                    var sauce2 = getRandomSauce(numSauce2);
+
+                    sauce = sauce1 + " et " + sauce2;
+                    console.log(sauce);
+                }
+
+                //Random du Supplément
+                if (document.getElementById("oui4").checked) {
+                    var quant = document.getElementById("sup").value;
+                    var numSup = [];
+                    var supplement = [];
+
+                    for (i = 0; i < quant; i++) {
+                        numSup[i] = getRandomInt(7);
+                        supplement[i] = getRandomSupp(numSup[i]);
+                        sup += supplement[i] + ", ";
+                        console.log(sup);
+                    }
+                }
+                else {
+                    Crudite = "sans suppléments";
+                }
+            }
+
+            //Fonction qui choisit les Crudités
+			function getRandomCrudite(numCrud) {
+				switch (numCrud) {
+					case 0:
+						crudite = "Oignons";
+						break;
+					case 1:
+						crudite = "Olives";
+						break;
+					case 2:
+						crudite = "Carotte râpées";
+						break;
+					case 3:
+						crudite = "Tomates";
+						break;
+					case 4:
+						crudite = "Salade";
+						break;
+					case 5:
+						crudite = "Maïs";
+						break;
+					case 6:
+						crudite = "Cornichon";
+						break;
+					
+
+				}
+                return crudite;
+			}
+
+            //Fonction qui choisit les Sauces
+            function getRandomSauce(numSauce) {
+                switch (numSauce) {
+                    case 0:
+                        sauce = "Sauce Andalouse";
+                        break;
+                    case 1:
+                        sauce = "Sauce Algérienne";
+                        break;
+                    case 2:
+                        sauce = "Sauce Samouraï ";
+                        break;
+                    case 3:
+                        sauce = "Sauce Tartare";
+                        break;
+                    case 4:
+                        sauce = "Sauce Brazil";
+                        break;
+                    case 5:
+                        sauce = "Sauce Blanche";
+                        break;
+                    case 6:
+                        sauce = "Sauce Ketchup";
+						break;
+                    case 7:
+                        sauce = "Sauce Mayonnaise";
+                        break;
+                    case 8:
+                        sauce = "Sauce Moutarde";
+                        break;
+                    case 9:
+                        sauce = "Sauce Marocaine";
+                        break;
+                    case 10:
+                        sauce = "Sauce Burger";
+                        break;
+                    case 11:
+                        sauce = "Sauce Barbecue";
+                        break;
+                    case 12:
+                        sauce = "Sauce Poivre";
+                        break;
+                    case 13:
+                        sauce = "Sauce Fish";
+                        break;
+
+
+                }
+                return sauce;
+            }
+
+			//Fonction qui choisit le gratinage
+			function getRandomGratinage(numGrat) {
+                    switch (numGrat) {
+                        case 0:
+                            gratinage = "Gratiné Emmental";
+                            break;
+                        case 1:
+                            gratinage = "Gratiné Cheddar";
+                            break;
+                        case 2:
+                            gratinage = "Gratiné Raclette";
+                            break;
+                        case 3:
+                            gratinage = "Gratiné Chèvre";
+                            break;
+                        case 4:
+                            gratinage = "Gratiné Champignions";
+                            break;
+                        case 5:
+                            gratinage = "Gratiné Olives";
+                            break;
+                        case 6:
+                            gratinage = "Gratiné Poivrons";
+                            break;
+                        case 7:
+                            gratinage = "Gratiné Cornichons";
+                            break;
+                        case 8:
+                            gratinage = "Gratiné Lardons";
+                            break;
+                        case 9:
+                            gratinage = "Gratiné Merguez";
+                            break;
+                        case 10:
+                            gratinage = "Gratiné Bacon";
+                            break;
+                    }
+				return gratinage;
+            }
+
+            //Fonction qui choisit les Sauces
+            function getRandomSupp(numSupp) {
+                switch (numSupp) {
+                    case 0:
+                        supp = "Supplément oeuf";
+                        break;
+                    case 1:
+                        supp = "Supplément bacon";
+                        break;
+                    case 2:
+                        supp = "Supplément lardons";
+                        break;
+                    case 3:
+                        supp = "Supplément sauce fromagère";
+                        break;
+                    case 4:
+                        supp = "Supplément chèvre";
+                        break;
+                    case 5:
+                        supp = "Supplément gruyère";
+                        break;
+                    case 6:
+                        supp = "Supplément vache qui rit";
+                        break;
+                    case 7:
+                        supp = "Supplément champignons";
+                        break;
+                    case 8:
+                        supp = "Supplément Galette de PDT";
+                        break;
+                    case 9:
+                        supp = "Supplément dinde fumée";
+                        break;
+                    case 10:
+                        supp = "Supplément oignons rings";
+                        break;
+                    case 11:
+                        supp = "Supplément fêta";
+                        break;
+                    case 12:
+                        supp = "Supplément raclette";
+                        break;
+                    case 13:
+                        supp = "Supplément cheddar";
+                        break;
+                    case 14:
+                        supp = "Supplément poivrons";
+                        break;
+
+
+                }
+                return supp;
+            }
+
+            function AfficheResultat() {
+                var Resultat = "BRAVO !!!  La tacos machine vous propose un delicieux "+ Taille + " composé de " + viande + ", " + Crudite + sauce + ", " + sup  + gratinage +".";
+                document.getElementById("result").textContent = Resultat;
+            }
+
+
+		</script>
+
+		
+	</body>
+</html>

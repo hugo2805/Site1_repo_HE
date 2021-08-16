@@ -2,6 +2,13 @@
 
 
 <div id="content">
+
+	<div class="parchemin">
+		<p>Quelle est la valeur de la montre à gousset sachant que pour chaque montre à gousset, elle est identique ?</p>
+
+		<!--Réponse : 5-->
+	</div>
+
 	<div id="operation">
 		<div>
 			5 + <img src="../Images/montre.png"> + <img src="../Images/montre.png"> + <img src="../Images/montre.png">
@@ -12,15 +19,11 @@
 		</div>
 	</div>
 
-	<div class="parchemin">
-	    <p>Quelle est la valeur de la montre à gousset sachant que pour chaque montre à gousset, elle est identique ?</p>
-	    
-	    <!--Réponse : 5-->
-	</div>
+
 
 	<form method="POST">
-		<input type="text">
-		<input type="submit" value="Valider">
+		<input id="Rep" type="text" value="">
+		<input type="button" value="Valider" ontouchstart="Verification()">
 	</form>
 </div>
 
@@ -40,3 +43,14 @@
 		width: 10vw;
 	}
 </style>
+
+<script>
+
+	function Verification()
+	{
+		var reponse = document.getElementById("Rep").value;
+		console.log(reponse);
+        window.location.href = "uniwebview://feedback?anwser=" + reponse;
+    }
+
+</script>

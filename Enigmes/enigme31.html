@@ -1,7 +1,7 @@
 <link rel="stylesheet" type="text/css" href="../css/default.css">
 
 
-<body id="content">
+<div id="content">
     <form method="POST">
         <div class="parchemin">
             <p>
@@ -11,32 +11,33 @@
 
         <table>
             <tr>
-                <td><input type="number" name="slot11" placeholder="--"></td>
-                <td><input type="number" name="slot12" placeholder="--"></td>
-                <td><input type="number" name="slot13" placeholder="--"></td>
-                <td><input type="number" name="slot14" placeholder="--"></td>
+                <td><input type="text" id="slot11" placeholder="--"></td>
+                <td><input type="text" id="slot12" placeholder="--"></td>
+                <td><input type="text" id="slot13" placeholder="--"></td>
+                <td><input type="text" id="slot14" placeholder="--"></td>
             </tr>
             <tr>
                 <td>3</td>
-                <td><input type="number" name="slot22" placeholder="--"></td>
+                <td><input type="text" id="slot22" placeholder="--"></td>
                 <td>2</td>
-                <td><input type="number" name="slot24" placeholder="--"></td>
+                <td><input type="text" id="slot24" placeholder="--"></td>
             </tr>
             <tr>
-                <td><input type="number" name="slot31" placeholder="--"></td>
-                <td><input type="number" name="slot32" placeholder="--"></td>
-                <td><input type="number" name="slot33" placeholder="--"></td>
-                <td><input type="number" name="slot34" placeholder="--"></td>
+                <td><input type="text" id="slot31" placeholder="--"></td>
+                <td><input type="text" id="slot32" placeholder="--"></td>
+                <td><input type="text" id="slot33" placeholder="--"></td>
+                <td><input type="text" id="slot34" placeholder="--"></td>
             </tr>
             <tr>
-                <td><input type="number" name="slot41" placeholder="--"></td>
+                <td><input type="text" id="slot41" placeholder="--"></td>
                 <td>1</td>
-                <td><input type="number" name="slot43" placeholder="--"></td>
+                <td><input type="text" id="slot43" placeholder="--"></td>
                 <td>4</td>
             </tr>
         </table>
 
-        <input type="submit" value="Valider">
+        <input type="button" value="Valider" ontouchstart="Verification()">
+
     </form>
 
     <!-- Réponse :
@@ -46,7 +47,17 @@
         2 1 3 4
     -->
 
-</body>
+</div>
+
+<script>
+
+    function Verification() {
+        var reponse = document.getElementById("slot11").value + document.getElementById("slot12").value + document.getElementById("slot13").value + document.getElementById("slot14").value + document.getElementById("slot22").value + document.getElementById("slot24").value + document.getElementById("slot31").value + document.getElementById("slot33").value + document.getElementById("slot34").value + document.getElementById("slot41").value + document.getElementById("slot43").value;
+        console.log(reponse);
+        window.location.href = "uniwebview://feedback?anwser=" + reponse;
+    }
+
+</script>
 
 <style>
     body{
@@ -66,7 +77,7 @@
         height: 100vh;
     }
 
-    input[type="number"]{
+    input[type="text"]{
         font-family: time new roman;
 
         width: 100%;

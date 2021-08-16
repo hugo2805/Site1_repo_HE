@@ -4,14 +4,24 @@
 <div id="content">
     <div class="parchemin">
         <p>
-        	Le docteur Muller, professeur au laboratoire H2O observe la prolifération de bactéries dans son éprouvette. Il remarque que le nombre de microbes double toutes les 15 minutes. A ce rythme il calcule que l’éprouvette sera pleine à midi pile. Mais pour son expérience le docteur Muller n’a besoin que de la moitié d’une éprouvette. A quelle heure l’éprouvette sera à moitié pleine de bactéries ?
+            Le docteur Muller, professeur au laboratoire H2O observe la prolifération de bactéries dans son éprouvette. Il remarque que le nombre de microbes double toutes les 15 minutes. A ce rythme il calcule que l’éprouvette sera pleine à midi pile. Mais pour son expérience le docteur Muller n’a besoin que de la moitié d’une éprouvette. A quelle heure l’éprouvette sera à moitié pleine de bactéries ?
         </p>
     </div>
 
     <form method="POST">
-    	<input type="text" name="answer">
-    	<input type="submit" value="Valider">
+        <input id="Rep" type="text" value="">
+        <input type="button" value="Valider" ontouchstart="Verification()">
     </form>
-    
+
     <!--Réponse : 11h45 -->
 </div>
+
+<script>
+
+    function Verification() {
+        var reponse = document.getElementById("Rep").value;
+        console.log(reponse);
+        window.location.href = "uniwebview://feedback?anwser=" + reponse;
+    }
+
+</script>
