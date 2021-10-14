@@ -35,7 +35,7 @@ input{
 	border-radius: 1vh;
 	color: orange;
 
-	min-width: 5vh;
+	/*min-width: 5vh;*/
 	height: 5vh;
 
     font-size: 1.5em;
